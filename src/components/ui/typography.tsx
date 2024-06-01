@@ -1,4 +1,5 @@
-import { cn } from "@/utils/functions"
+
+import { cn } from "@/lib/utils"
 import { VariantProps, cva } from "class-variance-authority"
 import { ClassValue } from "clsx"
 
@@ -12,7 +13,7 @@ export function H1({ children, classNames }: { children: React.ReactNode, classN
 
 export function H2({ children, classNames }: { children: React.ReactNode, classNames?: ClassValue }) {
   return (
-    <h2 className={cn(["scroll-m-20 pb-2 text-[138px] font-bold tracking-tight first:mt-0 border-b-0 leading-[1.4] text-primary-text", classNames])}>
+    <h2 className={cn(["scroll-m-20 pb-2 text-[25px] md:text-[32px] lg:text-[50px] font-bold tracking-tight first:mt-0 border-b-0 leading-[1.4] text-primary-text", classNames])}>
       {children}
     </h2>
   )
@@ -20,7 +21,7 @@ export function H2({ children, classNames }: { children: React.ReactNode, classN
 
 export function H3({ children, classNames }: { children: React.ReactNode, classNames?: ClassValue }) {
   return (
-    <h3 className={cn(["scroll-m-20 md:text-[32px] lg:text-[40px] font-bold tracking-tight leading-[1.4] text-primary-text", classNames])}>
+    <h3 className={cn(["scroll-m-20 text-[20px] md:text-[24px] lg:text-[32px] font-bold tracking-tight leading-[1.4] text-primary-text", classNames])}>
       {children}
     </h3>
   )
@@ -35,10 +36,12 @@ export function H4({ children, classNames }: { children: React.ReactNode, classN
 }
 
 const paragraphVariants = cva(
-  "[&:not(:first-child)]:mt-6 leading-[1.4] text-primary-text",
+  "[&:not(:first-child)]:mt-3 leading-[1.4] text-primary-text",
   {
     variants: {
       size: {
+        lg:
+          "font-semibold text-[20px]",
         md:
           "font-medium text-[16px]",
         rg:

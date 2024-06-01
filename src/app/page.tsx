@@ -1,14 +1,49 @@
-import { H1, H3, H4, P } from "@/components/ui/typography";
+import { H1, H2, H3, P } from "@/components/ui/typography";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Avatar from "../../public/Photo Mar 11 2024, 7 54 22 PM.jpg"
 import { Separator } from "@/components/ui/separator";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import ProjectCard from "@/components/ui/cards/project";
+import TechIcons from "@/components/ui/tech-icons";
 
-export default function Home() {
+import { Project } from "@/lib/db/entities";
+import { Metadata } from "next";
+import { ProjectCard as TProjectCard } from "@/lib/types";
+
+export const metadata: Metadata = {
+  title: "Fullstack Web Developer | Indianapolis, Indiana | Home",
+  description: "A Full stack web developer specialized in building frontend experinces, located in Marion county Indianapolis, Indiana. Accepting fulltime work or freelance contracts with creatives, startups, or small businesses in their early stages.",
+};
+
+/**
+ * Homepage with 5 Sections:
+ * - Hero: Name, location, and email
+ * - About: Image, and about me.  
+ *  - Should express my personality. Personalable, Authentic, Creative
+ * - What i Do: All the ways i can provide value
+ * - My Work: Focus on the tools i use and what i have made with them
+ * - Call to Action:
+ * 
+ *  Potential COA line: Have an idea? Lets make it a reality.
+ * 
+ * @returns 
+ */
+export default async function Page() {
+  const projects = new Project(['category', 'slug', 'cover_image', 'name'], {
+    limit: 3,
+    order: {
+      dir: "DESC",
+      field: "created_on"
+    }
+  })
+
+  await projects.fetchData()
+
   return (
     <main className="">
-      <div className="grid grid-cols-12">
+
+      {/* Landing/Header */}
+      <div className="grid grid-cols-12" id="home">
         <H1 classNames="col-span-12 md:col-span-6 lg:col-span-8 text-center md:text-start">ANTHONY GAYFLOR</H1>
         <div className={cn([
           "text-muted-foreground gap-x-3",
@@ -22,7 +57,9 @@ export default function Home() {
           <P className="!mt-0"><span className="font-semibold">Email:</span> Anthonygayflor6@gmail.com</P>
         </div>
       </div>
-      <div>
+
+      {/* Image (Add about me to make it one page) */}
+      <div className="grid lg:grid-cols-12 w-full" id="about">
         <Image
           src={Avatar}
           alt="picture of me"
@@ -30,40 +67,38 @@ export default function Home() {
           height={0}
           sizes="100vw 100%"
           quality={100}
-          className="max-h-[800px] object-cover object- w-full"
+          className="col-span-6 max-h-[800px] object-cover object- w-full"
         />
+        <div className="col-span-6 container flex flex-col justify-center lg:w-10/12">
+          <div className="py-6">
+            <H3>About Me</H3>
+            <P size="lg" className="text-muted-foreground !mt-0">Full stack developer focused on building front end experinces.</P>
+            <P>As a solo practitioner, I collaborate with independent creatives, startups, and small businesses in their initial stages. Utilizing cutting-edge web technologies and frameworks, I take pleasure in turning their ideas into fully functional and visually striking web applications.</P>
+          </div>
+          <div className="py-6">
+            <H3>Skills and Technologies</H3>
+            <TechIcons />
+          </div>
+          <div className="py-6">
+            <H3>Motivation</H3>
+            <P>I am deeply passionate about web development because it allows me to be creative and transform abstract ideas into tangible, user-friendly experiences. The ability to create something from scratch, shape it with code, and witness it come to life on the screen is what fuels my enthusiasm. I am motivated by the dynamic nature of the industry, where there's always something new to learn and master. The challenge of solving problems and the constant evolution of technologies keep me inspired to push my boundaries and stay at the forefront of innovation."</P>
+          </div>
+        </div>
       </div>
+
       <Separator orientation="horizontal" className="bg-[#090909]/10 my-7" />
-      <div className="grid lg:grid-cols-12 w-full">
+
+      {/* What I Do */}
+      <div className="grid lg:grid-cols-12 w-full py-36">
         <div className="col-span-6">
           <H3>What I Do</H3>
-          <div className="flex flex-row gap-x-2 py-3">
-            {techStack.map(item => (
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger>
-                    <img
-                      src={item.logo}
-                      alt={`${item.title} logo`}
-                      className="w-6 h-6"
-                    />
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <P size="sm">{item.title}</P>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
-
-            ))}
-          </div>
-
         </div>
         <div className="col-span-6 grid grid-cols-6 md:grid-cols-12">
           <div className="col-span-5 space-y-[60px]">
             {whatIDo.left.map(item => (
               <div className="col-span-6 flex flex-col" key={item.title}>
                 <H3>{item.title}</H3>
-                <P>{item.description}</P>
+                <P className="!mt-3">{item.description}</P>
               </div>
             ))}
           </div>
@@ -74,12 +109,29 @@ export default function Home() {
             {whatIDo.right.map(item => (
               <div className="col-span-6 flex flex-col" key={item.title}>
                 <H3>{item.title}</H3>
-                <P>{item.description}</P>
+                <P className="!mt-3">{item.description}</P>
               </div>
             ))}
           </div>
         </div>
       </div>
+
+      <Separator orientation="horizontal" className="bg-[#090909]/10 my-7" />
+
+      {/* Most Recent Projects */}
+      <div className="grid lg:grid-cols-12 w-full py-36 gap-y-6" id="work">
+        <div className="col-span-6">
+          <H3>My Work</H3>
+        </div>
+        <div className="col-span-6 grid md:grid-cols-12 gap-6">
+          {projects.rows.map(item => (
+            <ProjectCard key={item.slug} {...item} />
+          ))}
+        </div>
+      </div>
+
+      <Separator orientation="horizontal" className="bg-[#090909]/10 my-7" />
+
     </main>
   );
 }
@@ -88,11 +140,11 @@ export default function Home() {
 const whatIDo = {
   left: [
     {
-      title: "Web Development",
+      title: "Website Development",
       description: "I create stunning digital designs that engage and inspire your audience; along with a performant website. Let me bring your brand to life with my skills."
     },
     {
-      title: "Upgrades",
+      title: "MVP/App Development",
       description: "I create stunning digital designs that engage and inspire your audience. Let me bring your brand to life with my skills."
     },
   ],
@@ -109,38 +161,5 @@ const whatIDo = {
   ]
 }
 
-const techStack = [
-  {
-    title: "Next.Js",
-    logo: "https://w7.pngwing.com/pngs/87/586/png-transparent-next-js-hd-logo.png",
-  },
-  {
-    title: "TypeScript",
-    logo: "https://cdn.icon-icons.com/icons2/2415/PNG/512/typescript_plain_logo_icon_146316.png",
-  },
-  {
-    title: "JavaScript",
-    logo: "https://www.computerhope.com/jargon/j/javascript.png",
-  },
-  {
-    title: "React.Js",
-    logo: "https://th.bing.com/th/id/OIP.cPh7ujRIfcHAy4kW2ADGOwHaHa?rs=1&pid=ImgDetMain",
-  },
-  {
-    title: "Node.Js",
-    logo: "https://api.qspiders.com/media/course_images/node-js_a3KAOmA.png",
-  },
-  {
-    title: "PostgreSQL",
-    logo: "https://th.bing.com/th/id/OIP.6pLWWA3aD7z2GozLFuDQKgHaHp?rs=1&pid=ImgDetMain",
-  },
-  {
-    title: "TailwindCSS",
-    logo: "https://th.bing.com/th/id/OIP.4MLiXSkY-1i2fgt0gR6aowAAAA?rs=1&pid=ImgDetMain",
-  },
-  {
-    title: "Supabase",
-    logo: "https://seeklogo.com/images/S/supabase-logo-DCC676FFE2-seeklogo.com.png",
-  },
-]
+
 

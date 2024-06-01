@@ -1,4 +1,5 @@
-import { cn } from "@/utils/functions"
+
+import { cn } from "@/lib/utils"
 import { ClassValue } from "clsx"
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {

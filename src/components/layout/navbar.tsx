@@ -1,6 +1,5 @@
 import Link from "next/link";
-import { H3, H4 } from "../ui/typography";
-import Button from "../ui/button";
+import { H4 } from "../ui/typography";
 import { Drawer, DrawerClose, DrawerContent, DrawerTrigger } from "../ui/drawer";
 import { MenuSVG } from "../svgs";
 import { cn } from "@/lib/utils";
@@ -14,16 +13,10 @@ import { cn } from "@/lib/utils";
  * @returns 
  */
 export default function Navbar() {
-
   return (
-    <div className="flex flex-row w-full sticky justify-center px-3">
+    <div className={cn(["flex flex-row w-full sticky justify-center px-3",])}>
       <H4 classNames="mr-auto md:mr-0">AG</H4>
-
       <NavMenu />
-
-      <Button classNames="hidden md:inline-flex">
-        Get in Touch
-      </Button>
       <MobileNavDrawer />
     </div>
   )
@@ -38,18 +31,18 @@ function NavMenu({ isMobile, classNames }: { isMobile?: boolean; classNames?: st
         "flex-col py-6 gap-y-3 text-center": isMobile
       }])}>
         <li className="my-auto">
-          <Link href="/">
+          <Link href="/#home">
             Home
           </Link>
         </li>
         <li className="my-auto">
-          <Link href="/work">
-            My Work
+          <Link href="/#about">
+            About
           </Link>
         </li>
         <li className="my-auto">
-          <Link href="/about">
-            About
+          <Link href="/#work">
+            My Work
           </Link>
         </li>
       </ul>
