@@ -3,6 +3,7 @@ import { H4 } from "../ui/typography";
 import { Drawer, DrawerClose, DrawerContent, DrawerTrigger } from "../ui/drawer";
 import { MenuSVG } from "../svgs";
 import { cn } from "@/lib/utils";
+import Logo from "./logo";
 
 /**
  * Navbar is made up of 4 other components/elements:
@@ -15,7 +16,7 @@ import { cn } from "@/lib/utils";
 export default function Navbar() {
   return (
     <div className={cn(["flex flex-row w-full sticky justify-center px-3",])}>
-      <H4 classNames="mr-auto md:mr-0">AG</H4>
+      <Logo />
       <NavMenu />
       <MobileNavDrawer />
     </div>
@@ -24,7 +25,7 @@ export default function Navbar() {
 
 function NavMenu({ isMobile, classNames }: { isMobile?: boolean; classNames?: string; }) {
   return (
-    <nav className={cn(["hidden md:flex mx-auto justify-center", {
+    <nav className={cn(["hidden md:inline-flex mx-auto", {
       "flex": isMobile,
     }, classNames])}>
       <ul className={cn(["flex flex-row gap-x-3 justify-center", {

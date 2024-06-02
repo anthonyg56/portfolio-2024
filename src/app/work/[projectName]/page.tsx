@@ -3,8 +3,8 @@ import { Metadata, ResolvingMetadata } from "next"
 import Image from "next/image"
 import { H1, P, H2, H4, H3 } from "@/components/ui/typography"
 import { capitalizeFirst, cn } from "@/lib/utils"
-import { ProjectNames } from "@/lib/types"
-import { Project } from "@/lib/db/entities"
+import { Project, ProjectNames } from "@/lib/types"
+import { sql } from "@vercel/postgres"
 
 type PageParams = {
   projectName: ProjectNames
@@ -20,26 +20,19 @@ export async function generateMetadata({ params, searchParams }: MetadataProps, 
   const { projectName } = params
 
   // fetch data
-  const projects = new Project("*", {
-    eq: [
-      {
-        field: "name",
-        value: projectName
-      }
-    ]
-  })
+  const { rows: projects } = await sql<Project>`SELECT * FROM projects WHERE name = ${projectName}`
 
-  await projects.fetchData()
+  if (projectName[0] === undefined)
+    return {
+      title: "Project Not Found | My Work",
+      description: "Please check the url and try again"
+    }
 
-  // If there is no project data route back to the home page
-  if (projects.rows.length === 0 || projects.rows[0] === undefined)
-    redirect('/')
-
-  const cleansedName = capitalizeFirst(projects.rows[0].name)
+  const cleansedName = capitalizeFirst(projects[0].name)
 
   return {
-    title: `${cleansedName} | My Work`,
-    description: projects.rows[0].description
+    title: `${cleansedName} | Fullstack Web Developer | Indianapolis, Indiana | My Work`,
+    description: projects[0].description
   }
 }
 
@@ -50,20 +43,8 @@ type PageProps = {
 export default async function Page({ params }: PageProps) {
   const { projectName } = params
 
-  const projects = new Project("*", {
-    eq: [
-      {
-        field: "name",
-        value: projectName
-      }
-    ]
-  })
-
-  await projects.fetchData()
-
-  // If there is no project data route back to the home page
-  if (projects.rows.length === 0 || projects.rows[0] === undefined)
-    redirect('/')
+  // fetch data
+  const { rows: projects } = await sql<Project>`SELECT * FROM projects WHERE name = ${projectName}`
 
   const {
     category,
@@ -80,37 +61,37 @@ export default async function Page({ params }: PageProps) {
     name,
     youtube_url,
     id
-  } = projects.rows[0]
+  } = projects[0]
 
-  const cleansedName = capitalizeFirst(projects.rows[0].name)
   return (
     <div>
-      <div className="grid grid-cols-12" id="home">
-        <H1 classNames="col-span-12 md:col-span-6 lg:col-span-8 text-center md:text-start">{cleansedName}</H1>
+      <div className="flex flex-col lg:flex-row py gap-x-6 pt-6 relative" id="home">
+        <H1 classNames="text-center lg:text-start lg:text-[75px]">{name.toUpperCase()}</H1>
+        <H4 classNames="absolute pl-6px lg:pl-1 xl:pl-[6px] font-bold lg:text-[20px] !3xl:text-[26px]">{category.toUpperCase()}</H4>
         <div className={cn([
-          "text-muted-foreground gap-x-3",
-          "flex flex-row",
-          "col-span-12 md:col-span-6 lg:col-span-4",
-          "justify-center md:justify-start",
-          "items-end",
-          "pb-0 md:pb-6 lg:pb-9 xl:pb-11"
+          "text-muted-foreground gap-3",
+          "flex flex-col md:flex-row xl:flex-col",
+          "",
+          "justify-center lg:justify-end",
+          "items-center md:items-start lg:items-end xl:items-start",
+          "pb-5 lg:pb-6 2xl:pb-10"
         ])}>
           {github_url && (
-            <div className="flex flex-col justify-between">
-              <P>Guthub:</P>
-              <a href={github_url}>{github_url}</a>
+            <div className="flex flex-col">
+              <P className="!font-bold">Github:</P>
+              <a href={github_url} className="text-primary transition-colors">{github_url}</a>
             </div>
           )}
           {live_url && (
-            <div className="flex flex-col justify-between">
-              <P>Live Demo:</P>
-              <a href={live_url}>{live_url}</a>
+            <div className="flex flex-col">
+              <P className="!font-bold">Live Demo:</P>
+              <a href={live_url} className="text-primary transition-colors">{live_url}</a>
             </div>
           )}
           {youtube_url && (
-            <div className="flex flex-col justify-between">
-              <P>Video Demo:</P>
-              <a href={youtube_url}>{youtube_url}</a>
+            <div className="flex flex-col">
+              <P className="!font-bold">Video Demo:</P>
+              <a href={youtube_url} className="hover:text-primary transition-colors">{youtube_url}</a>
             </div>
           )}
         </div>
@@ -129,7 +110,7 @@ export default async function Page({ params }: PageProps) {
       {/* Project Description */}
       <div className="grid grid-col-12 py-6 w-full">
         <div className="col-span-6">
-          <H3>About {cleansedName}</H3>
+          <H3>About</H3>
         </div>
         <div className="col-span-6">
           <H4>{capitalizeFirst(description)}</H4>

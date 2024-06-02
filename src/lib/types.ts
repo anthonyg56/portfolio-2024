@@ -21,7 +21,7 @@ export type Project = {
   solution_description: string,
 }
 
-export type ProjectCard = Pick<Project, 'category' | 'cover_image' | 'name' | 'slug'>;
+export type ProjectCard = Pick<Project, 'category' | 'cover_image' | 'name' | 'slug' | 'created_on'>;
 
 // Project Helper types
 export type ProjectCategory = "App Development"

@@ -18,6 +18,9 @@ const config = {
       },
     },
     extend: {
+      screens: {
+        "3xl": "1850px",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

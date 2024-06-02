@@ -5,7 +5,7 @@ import { ClassValue } from "clsx"
 
 export function H1({ children, classNames }: { children: React.ReactNode, classNames?: ClassValue }) {
   return (
-    <h1 className={cn(["scroll-m-20 text-[80px] lg:text-[138px] font-extrabold tracking-tight leading-[1.4] text-primary-text", classNames])}>
+    <h1 className={cn(["scroll-m-20 text-[60px] md:text-[70px] xl:text-[90px] 2xl:text-[118px] 3xl:text-[138px] font-extrabold tracking-tight leading-[1.4] text-primary-text", classNames])}>
       {children}
     </h1>
   )
@@ -13,7 +13,7 @@ export function H1({ children, classNames }: { children: React.ReactNode, classN
 
 export function H2({ children, classNames }: { children: React.ReactNode, classNames?: ClassValue }) {
   return (
-    <h2 className={cn(["scroll-m-20 pb-2 text-[25px] md:text-[32px] lg:text-[50px] font-bold tracking-tight first:mt-0 border-b-0 leading-[1.4] text-primary-text", classNames])}>
+    <h2 className={cn(["scroll-m-20 pb-2 text-[25px] md:text-[38px] lg:text-[50px] font-bold tracking-tight first:mt-0 border-b-0 leading-[1.4] text-primary-text", classNames])}>
       {children}
     </h2>
   )
@@ -21,7 +21,7 @@ export function H2({ children, classNames }: { children: React.ReactNode, classN
 
 export function H3({ children, classNames }: { children: React.ReactNode, classNames?: ClassValue }) {
   return (
-    <h3 className={cn(["scroll-m-20 text-[20px] md:text-[24px] lg:text-[32px] font-bold tracking-tight leading-[1.4] text-primary-text", classNames])}>
+    <h3 className={cn(["scroll-m-20 text-[20px] md:text-[30px] lg:text-[36px] font-bold tracking-tight leading-[1.4] text-primary-text", classNames])}>
       {children}
     </h3>
   )
@@ -29,7 +29,7 @@ export function H3({ children, classNames }: { children: React.ReactNode, classN
 
 export function H4({ children, classNames }: { children: React.ReactNode, classNames?: ClassValue }) {
   return (
-    <h4 className={cn(["scroll-m-20 text-[32px] font-medium tracking-tight leading-[1.4] text-primary-text", classNames])}>
+    <h4 className={cn(["scroll-m-20 text-[16px] md:text-[20px] lg:text-[26px] font-medium tracking-tight leading-[1.4] text-primary-text", classNames])}>
       {children}
     </h4>
   )
