@@ -71,7 +71,7 @@ export default async function Page() {
           </div>
           <div className="py-6">
             <H3>Motivation</H3>
-            <P>I am deeply passionate about web development because it allows me to be creative and transform abstract ideas into tangible, user-friendly experiences. The ability to create something from scratch, shape it with code, and witness it come to life on the screen is what fuels my enthusiasm. The challenge of solving problems and the constant evolution of technologies keep me inspired to push my boundaries and stay at the forefront of innovation."</P>
+            <P>I am deeply passionate about web development because it allows me to be creative and transform abstract ideas into tangible, user-friendly experiences. The ability to create something from scratch, shape it with code, and witness it come to life on the screen is what fuels my enthusiasm. The challenge of solving problems and the constant evolution of technologies keep me inspired to push my boundaries and stay at the forefront of innovation.</P>
           </div>
         </div>
       </div>
