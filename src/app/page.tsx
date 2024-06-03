@@ -1,7 +1,7 @@
 import { H1, H3, H4, P } from "@/components/ui/typography";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import Avatar from "../../public/Photo Mar 11 2024, 7 54 22 PM.jpg"
+import Avatar from "../../public/me.jpg"
 import { Separator } from "@/components/ui/separator";
 import TechIcons from "@/components/ui/tech-icons";
 
@@ -28,6 +28,7 @@ export const metadata: Metadata = {
  * @returns 
  */
 export default async function Page() {
+
   return (
     <main className="">
 
