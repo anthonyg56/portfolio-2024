@@ -10,6 +10,7 @@ export type Project = {
   slug: string,
   category: ProjectCategory,
   cover_image: string,
+  hero_image: string,
   description: string,
   live_url: string,
   github_url: string,

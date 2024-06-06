@@ -61,7 +61,8 @@ export default async function Page({ params }: PageProps) {
     solution_title,
     name,
     youtube_url,
-    id
+    id,
+    hero_image,
   } = projects[0]
 
   return (
@@ -99,7 +100,7 @@ export default async function Page({ params }: PageProps) {
       </div>
 
       <Image
-        src={cover_image}
+        src={hero_image}
         alt={`${name}'s cover photo`}
         width={0}
         height={0}
