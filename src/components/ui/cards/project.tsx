@@ -15,7 +15,7 @@ export default function ProjectCard({ category, cover_image, name, slug }: Props
       <div className="w-full h-full">
         <div className="relative max-h-[300px] h-[300px] lg:max-h-[500px] lg:h-[500px] w-full">
           <Image
-            src={cover_image}
+            src={`/${cover_image}`}
             alt={`${cover_image} image`}
             fill
             className="absolute object-cover object-center h-full"

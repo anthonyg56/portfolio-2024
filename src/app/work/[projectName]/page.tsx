@@ -65,6 +65,7 @@ export default async function Page({ params }: PageProps) {
     hero_image,
   } = projects[0]
 
+  console.log(hero_image)
   return (
     <div>
       <div className="flex flex-col lg:flex-row py gap-x-6 pt-6 relative" id="home">
@@ -100,13 +101,13 @@ export default async function Page({ params }: PageProps) {
       </div>
 
       <Image
-        src={hero_image}
+        src={`/${hero_image}`}
         alt={`${name}'s cover photo`}
         width={0}
         height={0}
         sizes="100vw 100%"
         quality={100}
-        className="max-h-[900px] object-cover object-center w-full"
+        className="max-h-[900px] object-contain object-center w-full"
       />
 
       {/* Project Description */}
