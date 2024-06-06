@@ -5,6 +5,7 @@ import { H1, P, H2, H4, H3 } from "@/components/ui/typography"
 import { capitalizeFirst, cn } from "@/lib/utils"
 import { Project, ProjectNames } from "@/lib/types"
 import { sql } from "@vercel/postgres"
+import Section from "@/components/layout/sections"
 
 type PageParams = {
   projectName: ProjectNames
@@ -108,28 +109,40 @@ export default async function Page({ params }: PageProps) {
       />
 
       {/* Project Description */}
-      <div className="grid grid-col-12 py-6 w-full">
+      {/* <div className="grid grid-col-12 py-6 w-full">
         <div className="col-span-6">
           <H3>About</H3>
         </div>
         <div className="col-span-6">
           <H4>{capitalizeFirst(description)}</H4>
         </div>
-      </div>
+      </div> */}
+      <Section title="About">
+        <H4>{capitalizeFirst(description)}</H4>
+      </Section>
 
+      <Section title="The Problem">
+        <H4>{capitalizeFirst(problem_title)}</H4>
+        <P>{capitalizeFirst(problem_description)}</P>
+      </Section>
+
+      <Section title="The Solution">
+        <H4>{capitalizeFirst(solution_title)}</H4>
+        <P>{capitalizeFirst(solution_description)}</P>
+      </Section>
       {/* The Problem it Attempts to Solve */}
-      <div className="grid grid-col-12 py-6 w-full">
+      {/* <div className="grid grid-col-12 py-6 w-full">
         <div className="col-span-6">
           <H3>The Problem</H3>
         </div>
         <div className="col-span-6">
-          <H4>{capitalizeFirst(problem_title)}</H4>
-          <P>{capitalizeFirst(problem_description)}</P>
+          <H4>{capitalizeFirst(solution_title)}</H4>
+          <P>{capitalizeFirst(solution_description)}</P>
         </div>
-      </div>
+      </div> */}
 
       {/* The solution it chose */}
-      <div className="grid grid-col-12 py-6 w-full">
+      {/* <div className="grid grid-col-12 py-6 w-full">
         <div className="col-span-6">
           <H3>The Solution</H3>
         </div>
@@ -137,7 +150,7 @@ export default async function Page({ params }: PageProps) {
           <H4>{capitalizeFirst(solution_title)}</H4>
           <P>{capitalizeFirst(solution_description)}</P>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }
