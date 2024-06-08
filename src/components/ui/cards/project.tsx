@@ -18,7 +18,7 @@ export default function ProjectCard({ category, cover_image, name, slug }: Props
             src={`/${cover_image}`}
             alt={`${cover_image} image`}
             fill
-            className="absolute object-cover object-center h-full"
+            className="absolute object-cover object-center h-full shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] rounded-sm"
           />
         </div>
         <Separator orientation="horizontal" />

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { H4 } from "../ui/typography";
+import { H4, P } from "../ui/typography";
 import { Drawer, DrawerClose, DrawerContent, DrawerTrigger } from "../ui/drawer";
 import { MenuSVG } from "../svgs";
 import { cn } from "@/lib/utils";
@@ -16,7 +16,7 @@ import Logo from "./logo";
 export default function Navbar() {
   return (
     <div className={cn(["flex flex-row w-full sticky justify-center px-3",])}>
-      <Logo />
+      <P size="lg" className="inline-flex mr-auto">AG</P>
       <NavMenu />
       <MobileNavDrawer />
     </div>

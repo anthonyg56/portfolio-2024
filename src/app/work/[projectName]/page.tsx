@@ -6,6 +6,7 @@ import { capitalizeFirst, cn } from "@/lib/utils"
 import { Project, ProjectNames } from "@/lib/types"
 import { sql } from "@vercel/postgres"
 import Section from "@/components/layout/sections"
+import { Button } from "@/components/ui/button"
 
 type PageParams = {
   projectName: ProjectNames
@@ -69,32 +70,33 @@ export default async function Page({ params }: PageProps) {
   return (
     <div>
       <div className="flex flex-col lg:flex-row py gap-x-6 pt-6 relative" id="home">
-        <H1 classNames="text-center lg:text-start lg:text-[75px]">{name.toUpperCase()}</H1>
-        <H4 classNames="absolute pl-6px lg:pl-1 xl:pl-[6px] font-bold lg:text-[20px] !3xl:text-[26px]">{category.toUpperCase()}</H4>
+        <H1 classNames="hidden lg:block text-center lg:text-start lg:text-[75px]">{name.toUpperCase()}</H1>
+        <H4 classNames="max-lg:translate-y-4 max-lg:text-center max-lg:pb-0 lg:absolute pl-6px lg:pl-1 xl:pl-[6px] font-bold text-[18px] lg:text-[20px] xl:text-[24px] 2xl:text-[30px] 3xl:text-[35px]">{category.toUpperCase()}</H4>
+        <H1 classNames="text-center lg:text-start lg:text-[75px] lg:hidden">{name.toUpperCase()}</H1>
         <div className={cn([
-          "text-muted-foreground gap-3",
-          "flex flex-col md:flex-row xl:flex-col",
-          "",
+          "text-muted-foreground gap-3 flex-wrap",
+          "flex flex-col md:flex-row ",
+          "gap-x-1",
           "justify-center lg:justify-end",
-          "items-center md:items-start lg:items-end xl:items-start",
-          "pb-5 lg:pb-6 2xl:pb-10"
+          "items-center md:items-start lg:items-end",
+          "pb-0 md:pb-5 lg:pb-6 2xl:pb-10"
         ])}>
-          {github_url && (
-            <div className="flex flex-col">
-              <P className="!font-bold">Github:</P>
-              <a href={github_url} className="text-primary transition-colors">{github_url}</a>
-            </div>
-          )}
           {live_url && (
-            <div className="flex flex-col">
+            <div className="flex flex-row gap-x-1">
               <P className="!font-bold">Live Demo:</P>
               <a href={live_url} className="text-primary transition-colors">{live_url}</a>
             </div>
           )}
           {youtube_url && (
-            <div className="flex flex-col">
+            <div className="flex flex-row gap-x-1">
               <P className="!font-bold">Video Demo:</P>
-              <a href={youtube_url} className="hover:text-primary transition-colors">{youtube_url}</a>
+              <a href={youtube_url} className="text-primary transition-colors">{youtube_url}</a>
+            </div>
+          )}
+          {github_url && (
+            <div className="flex flex-row">
+              <P className="!font-bold">Github:</P>
+              <a href={github_url} className="text-primary transition-colors">{github_url}</a>
             </div>
           )}
         </div>
@@ -120,18 +122,26 @@ export default async function Page({ params }: PageProps) {
         </div>
       </div> */}
       <Section title="About">
-        <H4>{capitalizeFirst(description)}</H4>
+        <H4 classNames="lg:text-[22px]">{capitalizeFirst(description)}</H4>
       </Section>
 
       <Section title="The Problem">
-        <H4>{capitalizeFirst(problem_title)}</H4>
+        <H4 classNames="lg:text-[22px]">{capitalizeFirst(problem_title)}</H4>
         <P>{capitalizeFirst(problem_description)}</P>
       </Section>
 
       <Section title="The Solution">
-        <H4>{capitalizeFirst(solution_title)}</H4>
+        <H4 classNames="lg:text-[22px]">{capitalizeFirst(solution_title)}</H4>
         <P>{capitalizeFirst(solution_description)}</P>
+        {live_url && <a href={live_url}>
+          <Button className="mt-6">
+            View Live
+          </Button>
+        </a>}
       </Section>
+
+
+
       {/* The Problem it Attempts to Solve */}
       {/* <div className="grid grid-col-12 py-6 w-full">
         <div className="col-span-6">

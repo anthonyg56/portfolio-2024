@@ -21,7 +21,7 @@ export function H2({ children, classNames }: { children: React.ReactNode, classN
 
 export function H3({ children, classNames }: { children: React.ReactNode, classNames?: ClassValue }) {
   return (
-    <h3 className={cn(["scroll-m-20 text-[20px] md:text-[30px] lg:text-[36px] font-bold tracking-tight leading-[1.4] text-primary-text", classNames])}>
+    <h3 className={cn(["scroll-m-20 text-[20px] md:text-[22px] lg:text-[26px] font-bold tracking-tight leading-[1.4] text-primary-text", classNames])}>
       {children}
     </h3>
   )
@@ -29,7 +29,7 @@ export function H3({ children, classNames }: { children: React.ReactNode, classN
 
 export function H4({ children, classNames }: { children: React.ReactNode, classNames?: ClassValue }) {
   return (
-    <h4 className={cn(["scroll-m-20 text-[16px] md:text-[20px] lg:text-[26px] font-medium tracking-tight leading-[1.4] text-primary-text", classNames])}>
+    <h4 className={cn(["scroll-m-20 text-[16px] md:text-[20px] lg:text-[22px] font-medium tracking-tight leading-[1.4] text-primary-text", classNames])}>
       {children}
     </h4>
   )

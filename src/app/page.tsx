@@ -62,7 +62,7 @@ export default async function Page() {
         <div className="col-span-6 container flex flex-col justify-center xl:w-10/12">
           <div className="py-6">
             <H3>About Me</H3>
-            <H4 classNames="text-muted-foreground !font-medium !mt-2">Full stack developer, specialized in turning ideas into products.</H4>
+            <H4 classNames="text-muted-foreground !font-medium !mt-2 md:text-[16px] lg:text-[18px]">Full stack developer, specialized in turning ideas into products.</H4>
             <P>After college i picked up web development when i was surfing between my friends couches as a way to earn extra cashand get a job in the field i studied in. I enjoyed the creative process enough to the point it ended up becoming a hobby in my freetime and developed a skill in taking ideas and realizing it through code. Now, as a solo practitioner, I primarilly collaborate with independent creatives, startups, and small businesses who have an idea and the grit to turn it into a product.</P>
 
           </div>
@@ -82,7 +82,7 @@ export default async function Page() {
       {/* What I Do */}
       <div className="grid max-lg:container xl:grid-cols-12 w-full gap-y-6 py-14 2xl:py-20">
         <div className="col-span-6">
-          <H3>Services & What I Do</H3>
+          <H3>What I Do</H3>
         </div>
         <div className="col-span-6 grid grid-cols-6 md:grid-cols-12">
           <div className="col-span-6 pb-[60px] md:pb-0 md:col-span-5 space-y-[60px] w-full">
@@ -110,17 +110,14 @@ export default async function Page() {
       <Separator orientation="horizontal" className="bg-[#090909]/10 my-7" />
 
       {/* Most Recent Projects */}
-      <div className="grid lg:grid-cols-12 max-lg:container w-full gap-y-6 py-14 2xl:py-20" id="work">
+      <div className="grid xl:grid-cols-12 max-lg:container w-full gap-y-6 py-14 2xl:py-20" id="work">
         <div className="col-span-6">
-          <H3 classNames="font-medium">My Work</H3>
+          <H3 classNames="">My Work</H3>
         </div>
         <Suspense fallback={<ProjectCarouselSkeleton />}>
           <ProjectsCarousel />
         </Suspense>
       </div>
-
-      <Separator orientation="horizontal" className="bg-[#090909]/10 my-7" />
-
     </main>
   );
 }
