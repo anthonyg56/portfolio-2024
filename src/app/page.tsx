@@ -63,16 +63,11 @@ export default async function Page() {
           <div className="py-6">
             <H3>About Me</H3>
             <H4 classNames="text-muted-foreground !font-medium !mt-2 md:text-[16px] lg:text-[18px]">Full stack developer, specialized in turning ideas into products.</H4>
-            <P>After college i picked up web development when i was surfing between my friends couches as a way to earn extra cashand get a job in the field i studied in. I enjoyed the creative process enough to the point it ended up becoming a hobby in my freetime and developed a skill in taking ideas and realizing it through code. Now, as a solo practitioner, I primarilly collaborate with independent creatives, startups, and small businesses who have an idea and the grit to turn it into a product.</P>
-
+            <P>I picked up web development after college when i was surfing between my friends couches as a way to earn extra cash. I love the creative process of building things to the point it became a hobby and developed a skill in realizing ideas through code. Now, as a solo practitioner, I primarilly collaborate with independent creatives, startups, and small businesses who have an idea and the grit to turn it into a product.</P>
           </div>
           <div className="py-6">
             <H3>Skills and Technologies</H3>
             <TechIcons />
-          </div>
-          <div className="py-6">
-            <H3>Motivation</H3>
-            <P>I am deeply passionate about web development because it allows me to be creative and transform abstract ideas into tangible, user-friendly experiences. The ability to create something from scratch, shape it with code, and witness it come to life on the screen is what fuels my enthusiasm. The challenge of solving problems and the constant evolution of technologies keep me inspired to push my boundaries and stay at the forefront of innovation.</P>
           </div>
         </div>
       </div>
@@ -127,22 +122,22 @@ const whatIDo = {
   left: [
     {
       title: "MVP Development",
-      description: "I create stunning digital designs that engage and inspire your audience; along with a performant website. Let me bring your brand to life with my skills."
+      description: "Transform your idea into a product through the use of bleeding-edge web technologies and realize your vision."
     },
     {
-      title: "Website Development",
-      description: "I create stunning digital designs that engage and inspire your audience; along with a performant website. Let me bring your brand to life with my skills."
+      title: "Feature Integration",
+      description: "Have a specific feature in mind? Lets help you integrate it into your current site or create a custom solution for you."
     },
   ],
   right: [
     {
-      title: "Website Maintenance",
-      description: "I create stunning digital designs that engage and inspire your audience; along with a performant website. Let me bring your brand to life with my skills."
+      title: "UI/UX Design",
+      description: "Lets bring your brand to life with digital designs that is authentic to the companys mission while engaging and inspire your audience."
     },
 
     {
-      title: "UI/UX Design",
-      description: "I create stunning digital designs that engage and inspire your audience; along with a performant website. Let me bring your brand to life with my skills."
+      title: "Migrations/Upgrades",
+      description: "Struggling with your current website? I can help you migrate to a more modern framework and even upgrade your current site to a more performant version of itself."
     }
   ]
 }
