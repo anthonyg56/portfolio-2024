@@ -8,6 +8,7 @@ import TechIcons from "@/components/ui/tech-icons";
 import { Metadata } from "next";
 import { Suspense } from "react";
 import ProjectsCarousel, { ProjectCarouselSkeleton } from "@/components/ui/list/projects";
+import TextGradient from "@/components/ui/misc/GradientText";
 
 export const metadata: Metadata = {
   title: "Fullstack Web Developer | Indianapolis, Indiana | Home",
@@ -34,7 +35,12 @@ export default async function Page() {
 
       {/* Landing/Header */}
       <div className="flex flex-col lg:flex-row py gap-x-6 pt-6" id="home">
-        <H1 classNames="text-center lg:text-start">ANTHONY GAYFLOR</H1>
+
+        <H1 classNames="text-center lg:text-start">
+          <TextGradient>
+            ANTHONY GAYFLOR
+          </TextGradient>
+        </H1>
         <div className={cn([
           "text-muted-foreground gap-3",
           "flex flex-col md:flex-row lg:flex-col",
@@ -57,7 +63,7 @@ export default async function Page() {
           height={0}
           sizes="100vw 100%"
           quality={100}
-          className="col-span-6 max-h-[800px] object-cover object-center w-full"
+          className="col-span-6 max-h-[800px] object-cover object-center w-full lg:rounded-lg"
         />
         <div className="col-span-6 container flex flex-col justify-center xl:w-10/12">
           <div className="py-6">
@@ -76,14 +82,18 @@ export default async function Page() {
 
       {/* What I Do */}
       <div className="grid max-lg:container xl:grid-cols-12 w-full gap-y-6 py-14 2xl:py-20">
-        <div className="col-span-6">
+        <div className="col-span-12 text-right pr-10">
           <H3>What I Do</H3>
         </div>
         <div className="col-span-6 grid grid-cols-6 md:grid-cols-12">
           <div className="col-span-6 pb-[60px] md:pb-0 md:col-span-5 space-y-[60px] w-full">
             {whatIDo.left.map(item => (
               <div className="col-span-6 flex flex-col" key={item.title}>
-                <H4 classNames="font-bold">{item.title}</H4>
+                <H4 classNames="font-bold">
+                  <TextGradient>
+                    {item.title}
+                  </TextGradient>
+                </H4>
                 <P className="!mt-3">{item.description}</P>
               </div>
             ))}
@@ -94,7 +104,11 @@ export default async function Page() {
           <div className="col-span-6 md:col-span-5 space-y-[60px]">
             {whatIDo.right.map(item => (
               <div className="col-span-6 flex flex-col" key={item.title}>
-                <H4 classNames="font-bold">{item.title}</H4>
+                <H4 classNames="font-bold">
+                  <TextGradient>
+                    {item.title}
+                  </TextGradient>
+                </H4>
                 <P className="!mt-3">{item.description}</P>
               </div>
             ))}

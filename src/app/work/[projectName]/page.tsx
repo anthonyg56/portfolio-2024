@@ -7,6 +7,7 @@ import { Project, ProjectNames } from "@/lib/types"
 import { sql } from "@vercel/postgres"
 import Section from "@/components/layout/sections"
 import { Button } from "@/components/ui/button"
+import TextGradient from "@/components/ui/misc/GradientText"
 
 type PageParams = {
   projectName: ProjectNames
@@ -70,9 +71,17 @@ export default async function Page({ params }: PageProps) {
   return (
     <div>
       <div className="flex flex-col lg:flex-row py gap-x-6 pt-6 relative" id="home">
-        <H1 classNames="hidden lg:block text-center lg:text-start lg:text-[75px]">{name.toUpperCase()}</H1>
+        <H1 classNames="hidden lg:block text-center lg:text-start lg:text-[75px]">
+          <TextGradient>
+            {name.toUpperCase()}
+          </TextGradient>
+        </H1>
         <H4 classNames="max-lg:translate-y-4 max-lg:text-center max-lg:pb-0 lg:absolute pl-6px lg:pl-1 xl:pl-[6px] font-bold text-[18px] lg:text-[20px] xl:text-[24px] 2xl:text-[30px] 3xl:text-[35px]">{category.toUpperCase()}</H4>
-        <H1 classNames="text-center lg:text-start lg:text-[75px] lg:hidden">{name.toUpperCase()}</H1>
+        <H1 classNames="text-center lg:text-start lg:text-[75px] lg:hidden">
+          <TextGradient>
+            {name.toUpperCase()}
+          </TextGradient>
+        </H1>
         <div className={cn([
           "text-muted-foreground gap-3 flex-wrap",
           "flex flex-col md:flex-row ",
@@ -109,7 +118,7 @@ export default async function Page({ params }: PageProps) {
         height={0}
         sizes="100vw 100%"
         quality={100}
-        className="max-h-[900px] object-contain object-center w-full"
+        className="max-h-[600px] object-contain object-center w-full"
       />
 
       {/* Project Description */}
