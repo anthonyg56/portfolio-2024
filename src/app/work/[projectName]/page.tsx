@@ -65,9 +65,8 @@ export default async function Page({ params }: PageProps) {
     youtube_url,
     id,
     hero_image,
-  } = projects[0]
+  } = projects[0];
 
-  console.log(hero_image)
   return (
     <div>
       <div className="flex flex-col lg:flex-row py gap-x-6 pt-6 relative" id="home">

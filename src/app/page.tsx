@@ -68,7 +68,11 @@ export default async function Page() {
         <div className="col-span-6 container flex flex-col justify-center xl:w-10/12">
           <div className="py-6">
             <H3>About Me</H3>
-            <H4 classNames="text-muted-foreground !font-medium !mt-2 md:text-[16px] lg:text-[18px]">Full stack developer, specialized in turning ideas into products.</H4>
+            <H4 classNames="text-muted-foreground !font-medium !mt-2 md:text-[16px] lg:text-[18px]">
+              <TextGradient>
+                Full stack developer, specialized in turning ideas into products.
+              </TextGradient>
+            </H4>
             <P>I picked up web development after college when i was surfing between my friends couches as a way to earn extra cash. I love the creative process of building things to the point it became a hobby and developed a skill in realizing ideas through code. Now, as a solo practitioner, I primarilly collaborate with independent creatives, startups, and small businesses who have an idea and the grit to turn it into a product.</P>
           </div>
           <div className="py-6">

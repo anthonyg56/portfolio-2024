@@ -26,7 +26,7 @@ export default function Navbar() {
 function NavMenu({ isMobile, classNames }: { isMobile?: boolean; classNames?: string; }) {
   return (
     <nav className={cn(["hidden md:inline-flex ml-auto", {
-      "flex": isMobile,
+      "flex m-auto": isMobile,
     }, classNames])}>
       <ul className={cn(["flex flex-row gap-x-3 justify-center", {
         "flex-col py-6 gap-y-3 text-center": isMobile
