@@ -63,7 +63,7 @@ export default async function Page() {
           height={0}
           sizes="100vw 100%"
           quality={100}
-          className="col-span-6 max-h-[800px] object-cover object-center w-full lg:rounded-lg"
+          className="col-span-6 max-h-[800px] h-[450px] md:h-[720px] object-cover object-center w-full rounded-full md:rounded-lg lg:rounded-lg"
         />
         <div className="col-span-6 container flex flex-col justify-center xl:w-10/12">
           <div className="py-6">
@@ -86,7 +86,7 @@ export default async function Page() {
 
       {/* What I Do */}
       <div className="grid max-lg:container xl:grid-cols-12 w-full gap-y-6 py-14 2xl:py-20">
-        <div className="col-span-12 text-right pr-10">
+        <div className="col-span-12 lg:text-right pr-10">
           <H3>What I Do</H3>
         </div>
         <div className="col-span-6 grid grid-cols-6 md:grid-cols-12">
