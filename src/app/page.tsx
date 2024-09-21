@@ -86,7 +86,7 @@ export default async function Page() {
 
       {/* What I Do */}
       <div className="grid max-lg:container xl:grid-cols-12 w-full gap-y-6 py-14 2xl:py-20">
-        <div className="col-span-12 lg:text-right pr-10">
+        <div className="col-span-12 lg:text-center pr-10">
           <H3>What I Do</H3>
         </div>
         <div className="col-span-6 grid grid-cols-6 md:grid-cols-12">
