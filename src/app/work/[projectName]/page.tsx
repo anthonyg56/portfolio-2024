@@ -1,176 +1,188 @@
-import { redirect } from "next/navigation"
 import { Metadata, ResolvingMetadata } from "next"
-import Image from "next/image"
-import { H1, P, H2, H4, H3 } from "@/components/ui/typography"
 import { capitalizeFirst, cn } from "@/lib/utils"
-import { Project, ProjectNames } from "@/lib/types"
-import { sql } from "@vercel/postgres"
-import Section from "@/components/layout/sections"
-import { Button } from "@/components/ui/button"
-import TextGradient from "@/components/ui/misc/GradientText"
+import { projects } from "@/lib/data"
+import PageHeader from "@/components/page-specific/work (old)/PageHeader";
+import { MasonGalleryController } from "@/components/page-specific/work (old)/MasonGalleryController";
+import Section from "@/components/layout/sections";
+import TextGradient from "@/components/ui/misc/GradientText";
+import Button from "@/components/ui/my-button";
+import { H1, H4, P } from "@/components/ui/typography";
+import Image from "next/image";
+import { readdirSync } from "fs";
+import { join } from "path";
+import ProjectImageCarousel from "@/components/page-specific/work/ProjectImageCarousel";
+import { Card, CardContent } from "@/components/ui/card";
+import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 
 type PageParams = {
-  projectName: ProjectNames
-}
+  projectName: string,
+};
 
 type MetadataProps = {
-  params: PageParams,
-  searchParams: { [key: string]: string | string[] | undefined }
-}
+  params: {
+    projectName: string,
+  },
+  searchParams: { [key: string]: string | string[] | undefined },
+};
 
 export async function generateMetadata({ params, searchParams }: MetadataProps, parent: ResolvingMetadata): Promise<Metadata> {
   // read route params
-  const { projectName } = params
+  const { projectName } = params;
 
-  // fetch data
-  const { rows: projects } = await sql<Project>`SELECT * FROM projects WHERE name = ${projectName}`
+  const project = projects.find(value => value.name === projectName);
 
-  if (projectName[0] === undefined)
+  if (project === undefined) {
     return {
       title: "Project Not Found | My Work",
       description: "Please check the url and try again"
-    }
+    };
+  };
 
-  const cleansedName = capitalizeFirst(projects[0].name)
+  const cleansedName = capitalizeFirst(project.name);
 
   return {
     title: `${cleansedName} | Fullstack Web Developer | Indianapolis, Indiana | My Work`,
-    description: projects[0].description
-  }
-}
+    description: project.about.text,
+  };
+};
 
 type PageProps = {
-  params: PageParams
-}
+  params: PageParams,
+};
 
 export default async function Page({ params }: PageProps) {
   const { projectName } = params
 
-  // fetch data
-  const { rows: projects } = await sql<Project>`SELECT * FROM projects WHERE name = ${projectName}`
+  const project = projects.find(value => value.slug === projectName)
 
-  const {
-    category,
-    cover_image,
-    created_on,
-    description,
-    github_url,
-    live_url,
-    problem_description,
-    problem_title,
-    slug,
-    solution_description,
-    solution_title,
-    name,
-    youtube_url,
-    id,
-    hero_image,
-  } = projects[0];
+  if (!project) {
+    throw new Error("Project not found");
+  };
 
+  /**
+ * Takes the path of a directory and returns a string array
+ * containing the names of all the files in said directory
+ * 
+ * @param dirPath - Path of the directory containing the files
+ * @returns a string array containing the names of all the files
+ */
+  function mapFileNames(dirPath: string | null): string[] | undefined | null {
+    console.log(project?.screenshotDir)
+    if (!dirPath || !project?.screenshotDir)
+      return
+
+    const newDir = project?.screenshotDir.replace("/", "");
+    const files = readdirSync(dirPath);
+
+    return files.map(file => join(dirPath, file)
+      .replace(`public\\`, "")
+      .replace("\\", "/")
+      .replace("\\", "/")
+    );
+  };
+
+  // return (
+  //   <div className="relative">
+  //     <PageHeader
+  //       headerImage={{
+  //         uri: project.coverPhoto,
+  //         alt: `Cover photo for ${project.name}`
+  //       }}
+  //       githubUrl={project.githubUrl}
+  //       launched={project.launched}
+  //       liveUrl={project.liveUrl}
+  //       name={project.name}
+  //       tags={project.tags}
+  //     />
+  //     <MasonGalleryController
+  //       albums={albums}
+  //     />
+  //   </div>
+  // )
+
+  const dirPath = project.screenshotDir ? `./public/UI_UX/${project.screenshotDir}/` : null;
+  const fileNames = mapFileNames(dirPath);
+
+  console.log(fileNames)
   return (
-    <div>
-      <div className="flex flex-col lg:flex-row py gap-x-6 pt-6 relative" id="home">
-        <H1 classNames="hidden lg:block text-center lg:text-start lg:text-[75px]">
+    <div className="grid">
+      {/* Header */}
+      <div className="flex flex-col py gap-x-6 pt-6 relative text-center" id="home">
+        <H4 classNames="font-bold text-[18px] lg:text-[20px] xl:text-[24px] 2xl:text-[30px] translate-y-[15px] xl:translate-y-[21px] 2xl:translate-y-[28px] 3xl:translate-y-[36px]">
+          {project.tags.join(", ")}
+        </H4>
+        <H1 classNames="block text-center lg:text-[75px]">
           <TextGradient>
-            {name.toUpperCase()}
+            {project.name.toUpperCase()}
           </TextGradient>
         </H1>
-        <H4 classNames="max-lg:translate-y-4 max-lg:text-center max-lg:pb-0 lg:absolute pl-6px lg:pl-1 xl:pl-[6px] font-bold text-[18px] lg:text-[20px] xl:text-[24px] 2xl:text-[30px] 3xl:text-[35px]">{category.toUpperCase()}</H4>
-        <H1 classNames="text-center lg:text-start lg:text-[75px] lg:hidden">
+
+        {/* <H1 classNames="text-center lg:text-start lg:text-[75px] lg:hidden">
           <TextGradient>
-            {name.toUpperCase()}
+            {project.name.toUpperCase()}
           </TextGradient>
-        </H1>
+        </H1> */}
         <div className={cn([
           "text-muted-foreground gap-3 flex-wrap",
           "flex flex-col md:flex-row ",
           "gap-x-1",
-          "justify-center lg:justify-end",
+          "justify-center",
           "items-center md:items-start lg:items-end",
           "pb-0 md:pb-5 lg:pb-6 2xl:pb-10"
         ])}>
-          {live_url && (
+          {project.liveUrl && (
             <div className="flex flex-row gap-x-1">
               <P className="!font-bold">Live Demo:</P>
-              <a href={live_url} className="text-primary transition-colors">{live_url}</a>
+              <a href={project.liveUrl} className="text-primary transition-colors">{project.liveUrl}</a>
             </div>
           )}
-          {youtube_url && (
-            <div className="flex flex-row gap-x-1">
-              <P className="!font-bold">Video Demo:</P>
-              <a href={youtube_url} className="text-primary transition-colors">{youtube_url}</a>
-            </div>
-          )}
-          {github_url && (
+          {project.githubUrl && (
             <div className="flex flex-row">
               <P className="!font-bold">Github:</P>
-              <a href={github_url} className="text-primary transition-colors">{github_url}</a>
+              <a href={project.githubUrl} className="text-primary transition-colors">{project.githubUrl}</a>
             </div>
           )}
         </div>
       </div>
 
-      <Image
-        src={`/${hero_image}`}
-        alt={`${name}'s cover photo`}
-        width={0}
-        height={0}
-        sizes="100vw 100%"
-        quality={100}
-        className="max-h-[600px] object-contain object-center w-full"
-      />
+      {/* Carousel */}
+      <Carousel className="w-full max-w-screen-3xl mx-auto pb-10 md:pb-12 lg:pb-16 2xl:pb-20">
+        <CarouselContent className="w-full h-full">
+          {fileNames?.map((fileName, index) => (
+            <CarouselItem key={index} className="w-full h-full">
+              <Image
+                src={`/${fileName}`}
+                alt={`${project.name}'s cover photo`}
+                width={0}
+                height={0}
+                sizes="100vw 100%"
+                quality={100}
+                className="object-contain object-center w-full h-full z-10 max-h-[900px]"
+              />
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
+      </Carousel>
 
-      {/* Project Description */}
-      {/* <div className="grid grid-col-12 py-6 w-full">
-        <div className="col-span-6">
-          <H3>About</H3>
-        </div>
-        <div className="col-span-6">
-          <H4>{capitalizeFirst(description)}</H4>
-        </div>
-      </div> */}
-      <Section title="About">
-        <H4 classNames="lg:text-[22px]">{capitalizeFirst(description)}</H4>
-      </Section>
+      {/* Sections/Contrent */}
+      <div className="grid grid-cols-12 mx-auto gap-9 pb-[69px] text-center 2xl:max-w-screen-xl 3xl:max-w-screen-3xl px-6">
+        <Section title="About" containerClassNames="col-span-12 md:col-span-4">
+          <H4 classNames="lg:text-[22px]">{capitalizeFirst(project.about.title)}</H4>
+          <P>{capitalizeFirst(project.about.text)}</P>
+        </Section>
 
-      <Section title="The Problem">
-        <H4 classNames="lg:text-[22px]">{capitalizeFirst(problem_title)}</H4>
-        <P>{capitalizeFirst(problem_description)}</P>
-      </Section>
+        <Section title="The Problem" containerClassNames="col-span-12 md:col-span-4">
+          <H4 classNames="lg:text-[22px]">{capitalizeFirst(project.problem.title)}</H4>
+          <P>{capitalizeFirst(project.problem.text)}</P>
+        </Section>
 
-      <Section title="The Solution">
-        <H4 classNames="lg:text-[22px]">{capitalizeFirst(solution_title)}</H4>
-        <P>{capitalizeFirst(solution_description)}</P>
-        {live_url && <a href={live_url}>
-          <Button className="mt-6">
-            View Live
-          </Button>
-        </a>}
-      </Section>
-
-
-
-      {/* The Problem it Attempts to Solve */}
-      {/* <div className="grid grid-col-12 py-6 w-full">
-        <div className="col-span-6">
-          <H3>The Problem</H3>
-        </div>
-        <div className="col-span-6">
-          <H4>{capitalizeFirst(solution_title)}</H4>
-          <P>{capitalizeFirst(solution_description)}</P>
-        </div>
-      </div> */}
-
-      {/* The solution it chose */}
-      {/* <div className="grid grid-col-12 py-6 w-full">
-        <div className="col-span-6">
-          <H3>The Solution</H3>
-        </div>
-        <div className="col-span-6">
-          <H4>{capitalizeFirst(solution_title)}</H4>
-          <P>{capitalizeFirst(solution_description)}</P>
-        </div>
-      </div> */}
+        <Section title="The Solution" containerClassNames="col-span-12 md:col-span-4">
+          <H4 classNames="lg:text-[22px]">{capitalizeFirst(project.solution.title)}</H4>
+          <P>{capitalizeFirst(project.solution.text)}</P>
+        </Section>
+      </div>
     </div>
   )
 }

@@ -50,3 +50,30 @@ function NoProjects({ text }: { text: string }) {
     </div>
   )
 }
+
+async function ProjectsList() {
+  try {
+    const { rows: projects } = await sql<TProjectCard>`SELECT category, slug, cover_image, name FROM projects ORDER BY created_on DESC LIMIT 3`
+
+    if (projects.length === 0)
+      return <NoProjects text="No projects were found" />
+
+    else
+      return (
+        <Carousel className="col-span-6">
+          <CarouselContent>
+            {projects?.map(item => (
+              <CarouselItem key={item.slug} className="md:basis-1/2">
+                <ProjectCard  {...item} />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="xl:hidden" />
+          <CarouselNext className="xl:hidden" />
+        </Carousel>
+      )
+  } catch (error: any) {
+    console.error(error.message)
+    return <NoProjects text="There was an error fetching the projects" />
+  }
+}

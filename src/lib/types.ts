@@ -1,44 +1,88 @@
-// Project Entity Types
-export type ProjectEntities = {
-  default: Project,
-  card: ProjectCard,
+export type Album = "Figma" | "Screen Shots" | "Documents" | "Blog Posts"
+
+// Projects Data
+export type Albums = {
+  [x in Album]: string[] | null;
 };
 
+export type OptionalURL = string | null;
+
+export type ProjectTag = "UI/UX" | "App Development" | "Upgrade/Migration" | "Feature Integration" | "Personal";
+
 export type Project = {
-  id?: number,
-  name: ProjectNames,
+  name: string,
   slug: string,
-  category: ProjectCategory,
-  cover_image: string,
-  hero_image: string,
-  description: string,
-  live_url: string,
-  github_url: string,
-  created_on: string,
-  youtube_url: string,
-  problem_title: string,
-  problem_description: string,
-  solution_title: string,
-  solution_description: string,
+  year: number,
+  liveUrl: OptionalURL,
+  githubUrl: OptionalURL,
+  coverPhoto: string,
+  problem: ProjectSection,
+  solution: ProjectSection,
+  about: ProjectSection,
+  launched: boolean,
+  tags: ProjectTag[],
+  screenshotDir: string | null,
 }
 
-export type ProjectCard = Pick<Project, 'category' | 'cover_image' | 'name' | 'slug' | 'created_on'>;
+// export type GroupedProjects = {
+//   year: string,
+//   projects: Project[],
+// }
 
-// Project Helper types
-export type ProjectCategory = "App Development"
-export type ProjectNames = "tribe" | "hypersets";
+export type ProjectSection = {
+  // image: string,
+  // pageImage: string,
+  title: string,
+  text: string,
+};
 
-// General custom types
-export type TableColumns<T> = keyof T | (keyof T)[] | '*';
-export type TableNames = "projects" | "images";
-export type TableOptions<T> = {
-  eq?: {
-    field: TableColumns<T>,
-    value: string | number,
-  }[],
-  order?: {
-    field: TableColumns<T>,
-    dir: "ASC" | "DESC"
-  },
-  limit?: number
+// Gallery
+
+export type MasonGalleryImage = {
+  uri: string,
+  alt: string,
+};
+
+/**
+ * Options to customize the mason gallery.
+ */
+export type FlexMasonryOptions = {
+  /** 
+   * (Optional) Fixed number of columns displayed in the gallery. 
+   * Only applies if `responsive` is set to false.
+   * 
+   * Defaults to 4 if no number is provided.
+   **/
+  numCols?: number,
+  /**
+   * Determines whether the gallery will be responsive or not.
+   * If false it will use the number provided in `numCols`,
+   * other wise it will use the values provided to  `breakpointCols`.
+   * 
+   * Default value is `true`
+   * */
+  responsive?: boolean,
+  /**
+   * Number of columns displayed at different css breakpoints.
+   * Default value by px:
+   * 
+   * ```
+   * breakpointCols: {
+   *  '1500': 6,
+   *  '1200': 5,
+   *  '992': 4,
+   *  '768': 3,
+   *  '576': 2,
+   * }
+   * ```
+   */
+  breakpointCols?: BreakPointCols,
+};
+
+export type BreakPointCols = {
+  1500: number,
+  1200: number,
+  992: number,
+  768: number,
+  576: number,
 };

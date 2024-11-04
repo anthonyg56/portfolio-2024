@@ -11,9 +11,9 @@ export function H1({ children, classNames }: { children: React.ReactNode, classN
   )
 }
 
-export function H2({ children, classNames }: { children: React.ReactNode, classNames?: ClassValue }) {
+export function H2({ children, classNames, onClick }: { children: React.ReactNode, classNames?: ClassValue, onClick?: (e: any) => void }) {
   return (
-    <h2 className={cn(["scroll-m-20 pb-2 text-[25px] md:text-[38px] lg:text-[50px] font-bold tracking-tight first:mt-0 border-b-0 leading-[1.4] text-primary-text", classNames])}>
+    <h2 onClick={onClick} className={cn(["scroll-m-20 pb-2 text-[25px] md:text-[38px] lg:text-[50px] font-bold tracking-tight first:mt-0 border-b-0 leading-[1.4] text-primary-text", classNames])}>
       {children}
     </h2>
   )

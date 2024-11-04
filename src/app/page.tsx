@@ -1,14 +1,13 @@
 import { H1, H3, H4, P } from "@/components/ui/typography";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import Avatar from "../../public/me.jpg"
+import Avatar from "../../public/me2.jpg"
 import { Separator } from "@/components/ui/separator";
 import TechIcons from "@/components/ui/tech-icons";
 
 import { Metadata } from "next";
-import { Suspense } from "react";
-import ProjectsCarousel, { ProjectCarouselSkeleton } from "@/components/ui/list/projects";
 import TextGradient from "@/components/ui/misc/GradientText";
+import { ProjectsV2 } from "@/components/ui/list/ProjectsV2";
 
 export const metadata: Metadata = {
   title: "Fullstack Web Developer | Indianapolis, Indiana | Home",
@@ -31,105 +30,100 @@ export const metadata: Metadata = {
 export default async function Page() {
 
   return (
-    <main className="">
-
-      {/* Landing/Header */}
-      <div className="flex flex-col lg:flex-row py gap-x-6 pt-6" id="home">
-
-        <H1 classNames="text-center lg:text-start">
-          <TextGradient>
-            ANTHONY GAYFLOR
-          </TextGradient>
-        </H1>
-        <div className={cn([
-          "text-muted-foreground gap-3",
-          "flex flex-col md:flex-row lg:flex-col",
-          "",
-          "justify-center lg:justify-end",
-          "items-center md:items-start",
-          "pb-5 xl:pb-6 2xl:pb-10"
-        ])}>
-          <P><span className="font-semibold">Location:</span> Indianapolis, In</P>
-          <P className="!mt-0"><span className="font-semibold text-primary-text hover:cursor-default">Email:</span> <a href="mailto:Anthonygayflor6@gmail.com" className="hover:cursor-pointer text-primary">AnthonyGayflor6@gmail.com</a></P>
-        </div>
-      </div>
-
-      {/* Image (Add about me to make it one page) */}
-      <div className="grid lg:grid-cols-12 w-full items-center" id="about">
-        <Image
-          src={Avatar}
-          alt="picture of me"
-          width={0}
-          height={0}
-          sizes="100vw 100%"
-          quality={100}
-          className="col-span-6 max-h-[800px] h-[450px] md:h-[720px] object-cover object-center w-full rounded-full md:rounded-lg lg:rounded-lg"
-        />
-        <div className="col-span-6 container flex flex-col justify-center xl:w-10/12">
-          <div className="py-6">
-            <H3>About Me</H3>
-            <H4 classNames="text-muted-foreground !font-medium !mt-2 md:text-[16px] lg:text-[18px]">
-              <TextGradient>
-                Full stack developer, specialized in turning ideas into products.
-              </TextGradient>
-            </H4>
-            <P>I picked up web development after college when i was surfing between my friends couches as a way to earn extra cash. I love the creative process of building things to the point it became a hobby and developed a skill in realizing ideas through code. Now, as a solo practitioner, I primarilly collaborate with independent creatives, startups, and small businesses who have an idea and the grit to turn it into a product.</P>
-          </div>
-          <div className="py-6">
-            <H3>Skills and Technologies</H3>
-            <TechIcons />
+    <main className="px-5 grid justify-center">
+      <div className="max-w-screen-3xl">
+        {/* Landing/Header */}
+        <div className="flex flex-col lg:flex-row py gap-x-6 pt-6" id="home">
+          <H1 classNames="text-center lg:text-start">
+            <TextGradient>
+              ANTHONY GAYFLOR
+            </TextGradient>
+          </H1>
+          <div className={cn([
+            "text-muted-foreground gap-3",
+            "flex flex-col md:flex-row lg:flex-col",
+            "",
+            "justify-center lg:justify-end",
+            "items-center md:items-start",
+            "pb-5 xl:pb-6 2xl:pb-10"
+          ])}>
+            <P><span className="font-semibold">Location:</span> Indianapolis, In</P>
+            <P className="!mt-0"><span className="font-semibold text-primary-text hover:cursor-default">Email:</span> <a href="mailto:Anthonygayflor6@gmail.com" className="hover:cursor-pointer text-primary">AnthonyGayflor6@gmail.com</a></P>
           </div>
         </div>
-      </div>
 
-      <Separator orientation="horizontal" className="bg-[#090909]/10 my-7" />
-
-      {/* What I Do */}
-      <div className="grid max-lg:container xl:grid-cols-12 w-full gap-y-6 py-14 2xl:py-20">
-        <div className="col-span-12 lg:text-center pr-10">
-          <H3>What I Do</H3>
-        </div>
-        <div className="col-span-6 grid grid-cols-6 md:grid-cols-12">
-          <div className="col-span-6 pb-[60px] md:pb-0 md:col-span-5 space-y-[60px] w-full">
-            {whatIDo.left.map(item => (
-              <div className="col-span-6 flex flex-col" key={item.title}>
-                <H4 classNames="font-bold">
-                  <TextGradient>
-                    {item.title}
-                  </TextGradient>
-                </H4>
-                <P className="!mt-3">{item.description}</P>
-              </div>
-            ))}
-          </div>
-          <div className="hidden col-span-2 md:flex justify-center">
-            <Separator orientation="vertical" className="bg-[#090909]/10" />
-          </div>
-          <div className="col-span-6 md:col-span-5 space-y-[60px]">
-            {whatIDo.right.map(item => (
-              <div className="col-span-6 flex flex-col" key={item.title}>
-                <H4 classNames="font-bold">
-                  <TextGradient>
-                    {item.title}
-                  </TextGradient>
-                </H4>
-                <P className="!mt-3">{item.description}</P>
-              </div>
-            ))}
+        {/* Image (Add about me to make it one page) */}
+        <div className="grid lg:grid-cols-12 w-full items-center" id="about">
+          <Image
+            src={Avatar}
+            alt="picture of me"
+            width={0}
+            height={0}
+            sizes="100vw 100%"
+            quality={100}
+            className="col-span-6 max-h-[800px] h-[450px] md:h-[720px] object-cover object-center w-full rounded-full md:rounded-lg lg:rounded-lg"
+          />
+          <div className="col-span-6 container flex flex-col justify-center xl:w-10/12">
+            <div className="py-6">
+              <H3>About Me</H3>
+              <H4 classNames="text-muted-foreground !font-medium !mt-2 md:text-[16px] lg:text-[18px]">
+                <TextGradient>
+                  Full stack developer, specialized in turning ideas into products.
+                </TextGradient>
+              </H4>
+              <P>I picked up web development after college when i was surfing between my friends couches as a way to earn extra cash. I love the creative process of building things to the point it became a hobby and developed a skill in realizing ideas through code. Now, as a solo practitioner, I primarilly collaborate with independent creatives, startups, and small businesses who have an idea and the grit to turn it into a product.</P>
+            </div>
+            <div className="py-6">
+              <H3>Skills and Technologies</H3>
+              <TechIcons />
+            </div>
           </div>
         </div>
-      </div>
 
-      <Separator orientation="horizontal" className="bg-[#090909]/10 my-7" />
+        <Separator orientation="horizontal" className="bg-[#090909]/10 my-7" />
 
-      {/* Most Recent Projects */}
-      <div className="grid xl:grid-cols-12 max-lg:container w-full gap-y-6 py-14 2xl:py-20" id="work">
-        <div className="col-span-6">
-          <H3 classNames="">My Work</H3>
+        {/* What I Do */}
+        <div className="grid max-lg:container xl:grid-cols-12 w-full gap-y-6 py-12 2xl:py-20">
+          <div className="col-span-12 text-center lg:text-start pr-10">
+            <H3>What I Do</H3>
+          </div>
+          <div className="col-span-12 grid grid-cols-6 md:grid-cols-12">
+            <div className="col-span-6 pb-[60px] md:pb-0 md:col-span-5 space-y-[60px] w-full">
+              {whatIDo.left.map(item => (
+                <div className="col-span-6 flex flex-col" key={item.title}>
+                  <H4 classNames="font-bold">
+                    <TextGradient>
+                      {item.title}
+                    </TextGradient>
+                  </H4>
+                  <P className="!mt-3">{item.description}</P>
+                </div>
+              ))}
+            </div>
+            <div className="hidden col-span-2 md:flex justify-center">
+              <Separator orientation="vertical" className="bg-[#090909]/10" />
+            </div>
+            <div className="col-span-6 md:col-span-5 space-y-[60px]">
+              {whatIDo.right.map(item => (
+                <div className="col-span-6 flex flex-col" key={item.title}>
+                  <H4 classNames="font-bold">
+                    <TextGradient>
+                      {item.title}
+                    </TextGradient>
+                  </H4>
+                  <P className="!mt-3">{item.description}</P>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
-        <Suspense fallback={<ProjectCarouselSkeleton />}>
-          <ProjectsCarousel />
-        </Suspense>
+
+        <Separator orientation="horizontal" className="bg-[#090909]/10 my-7" />
+
+        {/* Most Recent Projects */}
+        <div className="grid max-lg:container w-full gap-y-6 py-14 2xl:py-20" id="work">
+          <ProjectsV2 />
+        </div>
       </div>
     </main>
   );

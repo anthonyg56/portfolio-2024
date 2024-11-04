@@ -76,7 +76,7 @@
   }
 
   body {
-    @apply bg-background text-foreground p-5 box-border;
+    @apply bg-background text-foreground box-border;
   }
 }
 
@@ -98,5 +98,18 @@
     100% {
       background-position: 0% 50%;
     }
+  }
+
+  .embla {
+    overflow: hidden;
+  }
+
+  .embla__container {
+    display: flex;
+  }
+  
+  .embla__slide {
+    flex: 0 0 100%;
+    min-width: 0;
   }
 }

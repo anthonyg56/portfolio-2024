@@ -1,4 +1,5 @@
 import { type ClassValue, clsx } from "clsx"
+import { readdirSync } from "fs";
 import { twMerge } from "tailwind-merge"
 
 /**
@@ -33,3 +34,4 @@ export function capitalizeEach(str: string | null): string | null {
 export function capitalizeFirst(str: string): string {
   return str && str.charAt(0).toUpperCase() + str.slice(1);
 }
+
