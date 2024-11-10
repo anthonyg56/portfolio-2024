@@ -20,26 +20,22 @@ import { useEffect, useState } from "react";
  */
 
 export default function Navbar() {
-  const pathname = usePathname();
 
-  let isWorkPage: boolean;
-
-  if (pathname.includes('/work/')) {
-    isWorkPage = true;
-  };
 
   return (
-    <div className={cn(["w-full"])}>
-      <div className="w-full">
+    <div className={cn(["w-full flex sticky justify-center items-center"])}>
+      <div className="max-w-screen-3xl w-full px-3 lg:px-6 flex flex-row justify-between items-center py-3 lg:py-0">
         <P size="lg" className="inline-flex mr-auto">AG</P>
         <NavMenu />
-        <MobileNavDrawer pathname={pathname} />
+        <MobileNavDrawer />
       </div>
     </div>
   )
 }
 
 function NavMenu({ isMobile, classNames }: { isMobile?: boolean; classNames?: string; }) {
+  const pathname = usePathname();
+
   return (
     <nav className={cn(["hidden md:inline-flex ml-auto py-5", {
       "flex m-auto": isMobile,
@@ -47,17 +43,23 @@ function NavMenu({ isMobile, classNames }: { isMobile?: boolean; classNames?: st
       <ul className={cn(["flex flex-row gap-x-3 justify-center", {
         "flex-col py-6 gap-y-3 text-center": isMobile
       }])}>
-        <li className="my-auto">
+        <li className={cn(["my-auto", {
+          "border-b-2 border-b-black": pathname === "/"
+        }])}>
           <Link href="/#home">
             Home
           </Link>
         </li>
-        <li className="my-auto">
+        {/* <li className={cn(["my-auto", {
+          "border-b-2 border-b-black": pathname === "/"
+        }])}>
           <Link href="/#about">
             About
           </Link>
-        </li>
-        <li className="my-auto">
+        </li> */}
+        <li className={cn(["my-auto", {
+          "border-b-2 border-b-black": pathname.includes('/work/')
+        }])}>
           <Link href="/#work">
             My Work
           </Link>
@@ -67,9 +69,9 @@ function NavMenu({ isMobile, classNames }: { isMobile?: boolean; classNames?: st
   )
 }
 
-function MobileNavDrawer({ pathname }: { pathname: string }) {
+function MobileNavDrawer() {
   const [isOpen, setIsOpen] = useState(false);
-
+  const pathname = usePathname();
   useEffect(() => {
     console.log('Pathname changed');
     setIsOpen(false);

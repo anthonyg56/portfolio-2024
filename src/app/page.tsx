@@ -3,11 +3,11 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Avatar from "../../public/me2.jpg"
 import { Separator } from "@/components/ui/separator";
-import TechIcons from "@/components/ui/tech-icons";
-
 import { Metadata } from "next";
 import TextGradient from "@/components/ui/misc/GradientText";
-import { ProjectsV2 } from "@/components/ui/list/ProjectsV2";
+import { technologiesList } from "@/lib/data";
+import TechnologiesIcons from "@/components/ui/tech-icons";
+import MyProjects from "@/components/projects";
 
 export const metadata: Metadata = {
   title: "Fullstack Web Developer | Indianapolis, Indiana | Home",
@@ -74,8 +74,8 @@ export default async function Page() {
               <P>I picked up web development after college when i was surfing between my friends couches as a way to earn extra cash. I love the creative process of building things to the point it became a hobby and developed a skill in realizing ideas through code. Now, as a solo practitioner, I primarilly collaborate with independent creatives, startups, and small businesses who have an idea and the grit to turn it into a product.</P>
             </div>
             <div className="py-6">
-              <H3>Skills and Technologies</H3>
-              <TechIcons />
+              <H3>My Skills and Technologies</H3>
+              <TechnologiesIcons technologies={technologiesList} />
             </div>
           </div>
         </div>
@@ -120,10 +120,7 @@ export default async function Page() {
 
         <Separator orientation="horizontal" className="bg-[#090909]/10 my-7" />
 
-        {/* Most Recent Projects */}
-        <div className="grid max-lg:container w-full gap-y-6 py-14 2xl:py-20" id="work">
-          <ProjectsV2 />
-        </div>
+        <MyProjects />
       </div>
     </main>
   );

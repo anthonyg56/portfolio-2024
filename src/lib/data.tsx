@@ -1,4 +1,4 @@
-import { Album, Project, ProjectTag } from "./types";
+import { Album, Project, ProjectTag, Technology } from "./types";
 
 export const projects: Project[] = [
   {
@@ -23,9 +23,34 @@ export const projects: Project[] = [
       text: "My theory was if users had a central platform to upload, share, and download custom NGenuity RGB profiles; along with an incentive of getting paid per download of their preset. Not only would this help organize profiles on the web, the number of profiles availables would increase as well.",
     },
     screenshotDir: "/HyperSets",
+    tech: ["Next.js", "Supabase", "TypeScript", "TailwindCss", "Figma", "Trello"],
   },
   {
-    tags: ["App Development", "UI/UX"],
+    tags: ["Upgrade/Migration", "Feature Integration", "Mobile App Development"],
+    launched: true,
+    name: "Rivrb",
+    liveUrl: "https://rivrb.com/",
+    slug: "rivrb",
+    year: 2024,
+    githubUrl: null,
+    coverPhoto: "rivrb.png",
+    problem: {
+      title: "",
+      text: "",
+    },
+    solution: {
+      title: "",
+      text: "",
+    },
+    about: {
+      title: "A Chrome Extension for Fact-Checking",
+      text: "Rivrb is an AI & human-powered system that helps users quickly and accurately determine the credibility and accuracy of online information",
+    },
+    screenshotDir: null,
+    tech: ["Firebase", "JavaScript", "TypeScript", "Expo", "Node.js", "GraphQL"],
+  },
+  {
+    tags: ["App Development", "UI/UX", "Personal"],
     launched: false,
     name: "Tribe",
     liveUrl: null,
@@ -46,29 +71,7 @@ export const projects: Project[] = [
       text: "Tribe is a social media platform for exclusive social groups centered around a shared passion, interest, or general commonalities. Its mission is to help cultivate an online environment that empowers users to enjoy the content they love with those who matter most.",
     },
     screenshotDir: "/Tribe",
-  },
-  {
-    tags: ["Upgrade/Migration", "Feature Integration"],
-    launched: false,
-    name: "Rivrb",
-    liveUrl: "https://rivrb.com/",
-    slug: "rivrb",
-    year: 2024,
-    githubUrl: null,
-    coverPhoto: "rivrb.png",
-    problem: {
-      title: "",
-      text: "",
-    },
-    solution: {
-      title: "",
-      text: "",
-    },
-    about: {
-      title: "A Chrome Extension for Fact-Checking",
-      text: "Rivrb is an AI & human-powered system that helps users quickly and accurately determine the credibility and accuracy of online information",
-    },
-    screenshotDir: null,
+    tech: ["Next.js", "Notion", "TypeScript", "TailwindCss", "Figma", "PostgresSql", "Node.js"],
   },
   {
     tags: ["App Development", "UI/UX"],
@@ -92,10 +95,11 @@ export const projects: Project[] = [
       text: "streamline the procurement process for Municipal Buyers and Vendors, making it more efficient and transparent.",
     },
     screenshotDir: "/Procurement",
+    tech: ["Next.js", "TypeScript", "TailwindCss", "Figma", "Trello", "PostgresSql", "Prisma"],
   },
 
   {
-    tags: ["UI/UX"],
+    tags: ["UI/UX", "Mobile App Development"],
     launched: false,
     name: "Maze of life",
     liveUrl: "hyper-sets.com",
@@ -116,9 +120,87 @@ export const projects: Project[] = [
       text: "",
     },
     screenshotDir: "/MOL",
+    tech: ["Figma", "Notion",],
   },
 ];
 
-export const tagsList: ProjectTag[] = ["UI/UX", "App Development", "Upgrade/Migration", "Feature Integration", "Personal"];
+export const techImages: {
+  title: Technology,
+  logo: string,
+}[] = [
+    {
+      title: "Next.js",
+      logo: "https://w7.pngwing.com/pngs/87/586/png-transparent-next-js-hd-logo.png",
+    },
+    {
+      title: "TypeScript",
+      logo: "https://cdn.icon-icons.com/icons2/2415/PNG/512/typescript_plain_logo_icon_146316.png",
+    },
+    {
+      title: "JavaScript",
+      logo: "https://www.computerhope.com/jargon/j/javascript.png",
+    },
+    {
+      title: "React.js",
+      logo: "https://th.bing.com/th/id/OIP.cPh7ujRIfcHAy4kW2ADGOwHaHa?rs=1&pid=ImgDetMain",
+    },
+    {
+      title: "Node.js",
+      logo: "https://api.qspiders.com/media/course_images/node-js_a3KAOmA.png",
+    },
+    {
+      title: "PostgresSql",
+      logo: "https://th.bing.com/th/id/OIP.6pLWWA3aD7z2GozLFuDQKgHaHp?rs=1&pid=ImgDetMain",
+    },
+    {
+      title: "TailwindCss",
+      logo: "https://th.bing.com/th/id/OIP.4MLiXSkY-1i2fgt0gR6aowAAAA?rs=1&pid=ImgDetMain",
+    },
+    {
+      title: "Supabase",
+      logo: "https://seeklogo.com/images/S/supabase-logo-DCC676FFE2-seeklogo.com.png",
+    },
+    // TODO: Find images for these
+    {
+      title: "Expo",
+      logo: "https://www.svgrepo.com/show/341805/expo.svg",
+    },
+    {
+      title: "Figma",
+      logo: "https://www.svgrepo.com/show/452202/figma.svg",
+    },
+    {
+      title: "Firebase",
+      logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTerSDuBwLDF0OambAqG1BoM0wsuBo56J1NyQ&s",
+    },
+    {
+      title: "Rust",
+      logo: "https://miro.medium.com/max/1200/1*lmv2kXnZ9qsUGkrPz__QsQ.png",
+    },
+    {
+      title: "Trello",
+      logo: "https://w7.pngwing.com/pngs/19/732/png-transparent-trello-plain-logo-icon.png",
+    },
+    {
+      title: "Supabase",
+      logo: "https://seeklogo.com/images/S/supabase-logo-DCC676FFE2-seeklogo.com.png",
+    },
+    {
+      title: "Prisma",
+      logo: "https://w7.pngwing.com/pngs/130/82/png-transparent-prisma-hd-logo-thumbnail.png",
+    },
+    {
+      title: "GraphQL",
+      logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRGCJ3FZ9AqMTYe0iYxXBl2Bb38pUfvDVvpg&s",
+    },
+    {
+      title: "Notion",
+      logo: "https://static-00.iconduck.com/assets.00/notion-icon-982x1024-3j64xohd.png",
+    },
+  ]
+
+export const technologiesList: Technology[] = ["Expo", "Figma", "GraphQL", "JavaScript", "Next.js", "Node.js", "Notion", "PostgresSql", "Prisma", "React.js", "Rust", "Supabase", "TailwindCss", "Trello", "TypeScript"];
+
+export const tagsList: ProjectTag[] = ["UI/UX", "App Development", "Upgrade/Migration", "Feature Integration", "Personal", "Mobile App Development"];
 
 export const albumList: Album[] = ["Figma", "Screen Shots", "Documents", "Blog Posts"];

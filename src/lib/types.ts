@@ -1,5 +1,23 @@
 export type Album = "Figma" | "Screen Shots" | "Documents" | "Blog Posts"
 
+export type Technology =
+  "Next.js" |
+  "TypeScript" |
+  "JavaScript" |
+  "React.js" |
+  "PostgresSql" |
+  "TailwindCss" |
+  "Supabase" |
+  "Rust" |
+  "Node.js" |
+  "Figma" |
+  "Notion" |
+  "Trello" |
+  "Expo" |
+  "GraphQL" |
+  "Prisma" |
+  "Firebase";
+
 // Projects Data
 export type Albums = {
   [x in Album]: string[] | null;
@@ -7,7 +25,7 @@ export type Albums = {
 
 export type OptionalURL = string | null;
 
-export type ProjectTag = "UI/UX" | "App Development" | "Upgrade/Migration" | "Feature Integration" | "Personal";
+export type ProjectTag = "UI/UX" | "App Development" | "Upgrade/Migration" | "Feature Integration" | "Personal" | "Mobile App Development";
 
 export type Project = {
   name: string,
@@ -21,6 +39,7 @@ export type Project = {
   about: ProjectSection,
   launched: boolean,
   tags: ProjectTag[],
+  tech: Technology[],
   screenshotDir: string | null,
 }
 
