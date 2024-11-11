@@ -1,3 +1,5 @@
+"use client"
+
 import { projects } from "@/lib/data";
 import { ProjectTag } from "@/lib/types";
 import { CarouselItem, CarouselContent, CarouselPrevious, CarouselNext } from "../ui/carousel";
@@ -46,7 +48,7 @@ export default function ProjectsCarousel({ projectTags }: { projectTags: Project
     );
   } else {
     return (
-      <div className="flex flex-row relative">
+      <div>
         <CarouselContent>
           {currentProjects.map(project => (<ProjectsCarouselItem project={project} />))}
         </CarouselContent>

@@ -1,3 +1,5 @@
+"use client"
+
 import { ProjectTag } from "@/lib/types";
 import { useState, useEffect } from "react";
 import { CarouselApi, Carousel } from "../ui/carousel";
@@ -36,19 +38,19 @@ export default function MyProjects() {
   };
 
   return (
-    <div className="grid max-lg:container w-full gap-y-6 py-14 2xl:py-20" id="work">
-      <div>
-        <Carousel setApi={setCarouselApi}>
-          <ProjectTagsNavigation
-            api={carouselApi}
-            projectTags={projectTags}
-            handleTagsUpdate={handleTagsUpdate}
-          />
-          <ProjectsCarousel
-            projectTags={projectTags}
-          />
-        </Carousel>
-      </div>
+    // <div className="grid max-lg:container w-full gap-y-6 py-14 2xl:py-20" id="work">
+    <div>
+      <Carousel setApi={setCarouselApi}>
+        <ProjectTagsNavigation
+          api={carouselApi}
+          projectTags={projectTags}
+          handleTagsUpdate={handleTagsUpdate}
+        />
+        <ProjectsCarousel
+          projectTags={projectTags}
+        />
+      </Carousel>
     </div>
+    // </div>
   );
 };

@@ -1,3 +1,5 @@
+"use client"
+
 import { tagsList } from "@/lib/data";
 import { ProjectTag } from "@/lib/types";
 import { CarouselApi } from "../ui/carousel";

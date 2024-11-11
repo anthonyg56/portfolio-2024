@@ -1,5 +1,6 @@
+"use client"
 import { Project } from "@/lib/types";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from "../ui/card";
 import TechnologiesIcons from "../ui/tech-icons";
 import { P } from "../ui/typography";
@@ -16,7 +17,7 @@ export default function ProjectsCarouselItem({ project }: { project: Project }) 
         className="border-[#090909]/10 rounded-md overflow-hidden hover:cursor-pointer"
       >
         <Image
-          src={require(`../../../../public/cover/${project.coverPhoto}`)}
+          src={require(`../../../public/cover/${project.coverPhoto}`)}
           alt={`${project.name} Cover`}
           className="md:h-[500px] object-cover object-center"
         />
