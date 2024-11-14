@@ -59,16 +59,16 @@ export const projects: Project[] = [
     githubUrl: null,
     coverPhoto: "tribe.jpg",
     problem: {
-      title: "Theres too much smoke on social media.",
-      text: "",
+      title: "The experince on Social media is too commercialized",
+      text: "Platforms no longer feel as if they are for the common consumer to connect with friends but to consume content and gather data. It's isolating us more and more every day, just like back in 2020. Now, it’s starting to radicalize the population and spread dangerous ideas in an almost echo chamber like way.",
     },
     solution: {
       title: "Privatize the experince and keep the flame alive.",
-      text: "",
+      text: "Tribe allows users to create their own online space for the people that matter most. ",
     },
     about: {
       title: "Stay connected to those who matter, not the world.",
-      text: "Tribe is a social media platform for exclusive social groups centered around a shared passion, interest, or general commonalities. Its mission is to help cultivate an online environment that empowers users to enjoy the content they love with those who matter most.",
+      text: "Offer users the ability to create private or public online spaces for their friends, just like Discord, except with the option to customize it with common utilities and social media features they use every day called widgets. It will also be meant for the everyday consumer, not just those familiar with the complexities of building something like a discord server or subreddit.",
     },
     screenshotDir: "/Tribe",
     tech: ["Next.js", "Notion", "TypeScript", "TailwindCss", "Figma", "PostgresSql", "Node.js"],
@@ -83,16 +83,16 @@ export const projects: Project[] = [
     githubUrl: null,
     coverPhoto: "procurement.png",
     problem: {
-      title: "",
-      text: "",
+      title: "Procurement processes are often complex & inefficient.",
+      text: "Municipal procurement processes are often complex, inefficient, and burdened with administrative overhead. Municipal buyers face challenges such as; Regulatory Compliance, Administrative Burden, and a Lack of Transparency. Meanwhile Vendors strugle with their own issues, Overall, the lack of a unified, efficient system leads to delays, increased costs, and frustration for both municipal buyers and vendors.",
     },
     solution: {
-      title: "",
-      text: "",
+      title: "provide a unified platform to streamlines the process.",
+      text: "By automating administrative tasks, centralizing communication, and providing tools tailored to the needs of municipal buyers and vendors, the software significantly reduces inefficiencies. It ensures compliance, enhances transparency, and fosters better collaboration, ultimately transforming the municipal procurement process into a more efficient and user-friendly experience.",
     },
     about: {
       title: "Streamline the procurement process",
-      text: "streamline the procurement process for Municipal Buyers and Vendors, making it more efficient and transparent.",
+      text: "Procurement is a management platform specifically designed for municipal buyers and vendors. It serves as a centralized system that streamlines the entire procurement process within municipal governments. The platform offers tools for creating, managing, and auditing procurements, facilitating efficient communication between municipal procurement officers and vendors.",
     },
     screenshotDir: "/Procurement",
     tech: ["Next.js", "TypeScript", "TailwindCss", "Figma", "Trello", "PostgresSql", "Prisma"],

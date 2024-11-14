@@ -39,7 +39,7 @@ export default function MyProjects() {
 
   return (
     // <div className="grid max-lg:container w-full gap-y-6 py-14 2xl:py-20" id="work">
-    <div>
+    <div id="work">
       <Carousel setApi={setCarouselApi}>
         <ProjectTagsNavigation
           api={carouselApi}
