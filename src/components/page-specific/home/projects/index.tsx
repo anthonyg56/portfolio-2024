@@ -2,7 +2,7 @@
 
 import { ProjectTag } from "@/lib/types";
 import React, { useState, useEffect } from "react";
-import { CarouselApi, Carousel } from "../ui/carousel";
+import { CarouselApi, Carousel } from "../../../ui/carousel";
 import ProjectsCarousel from "./projectCarousel";
 import ProjectTagsNavigation from "./projectsTags";
 

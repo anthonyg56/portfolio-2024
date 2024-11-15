@@ -2,9 +2,9 @@
 
 import { tagsList } from "@/lib/data";
 import { ProjectTag } from "@/lib/types";
-import { CarouselApi } from "../ui/carousel";
-import { H3, H4 } from "../ui/typography";
-import { Button } from "../ui/button";
+import { CarouselApi } from "../../../ui/carousel";
+import { H3, H4 } from "../../../ui/typography";
+import { Button } from "../../../ui/button";
 
 export default function ProjectTagsNavigation({ api, projectTags, handleTagsUpdate }: {
   api: CarouselApi,

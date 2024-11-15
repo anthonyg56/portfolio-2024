@@ -2,8 +2,8 @@
 
 import { projects } from "@/lib/data";
 import { ProjectTag } from "@/lib/types";
-import { CarouselItem, CarouselContent, CarouselPrevious, CarouselNext } from "../ui/carousel";
-import { H4 } from "../ui/typography";
+import { CarouselItem, CarouselContent, CarouselPrevious, CarouselNext } from "../../../ui/carousel";
+import { H4 } from "../../../ui/typography";
 import ProjectsCarouselItem from "./projectCarouseltems";
 import React from "react";
 

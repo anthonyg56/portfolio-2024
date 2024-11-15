@@ -1,12 +1,12 @@
 "use client"
 import { Project } from "@/lib/types";
 import { useRouter } from "next/navigation";
-import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from "../ui/card";
-import TechnologiesIcons from "../ui/tech-icons";
-import { P } from "../ui/typography";
+import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from "../../../ui/card";
+import TechnologiesIcons from "../../../ui/tech-icons";
+import { P } from "../../../ui/typography";
 import Image from "next/image";
-import { CarouselItem } from "../ui/carousel";
-import { Button } from "../ui/button";
+import { CarouselItem } from "../../../ui/carousel";
+import { Button } from "../../../ui/button";
 
 export default function ProjectsCarouselItem({ project }: { project: Project }) {
   const router = useRouter();

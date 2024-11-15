@@ -7,7 +7,7 @@ import { Metadata } from "next";
 import TextGradient from "@/components/ui/misc/GradientText";
 import { technologiesList } from "@/lib/data";
 import TechnologiesIcons from "@/components/ui/tech-icons";
-import MyProjects from "@/components/projects";
+import MyProjects from "@/components/page-specific/home/projects";
 
 export const metadata: Metadata = {
   title: "Fullstack Web Developer | Indianapolis, Indiana | Home",

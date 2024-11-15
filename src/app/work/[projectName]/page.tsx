@@ -1,17 +1,12 @@
-import { Metadata, ResolvingMetadata } from "next"
-import { capitalizeFirst, cn } from "@/lib/utils"
-import { projects } from "@/lib/data"
-import PageHeader from "@/components/page-specific/work (old)/PageHeader";
-import { MasonGalleryController } from "@/components/page-specific/work (old)/MasonGalleryController";
+import { Metadata, ResolvingMetadata } from "next";
+import { capitalizeFirst, cn } from "@/lib/utils";
+import { projects } from "@/lib/data";
 import Section from "@/components/layout/sections";
 import TextGradient from "@/components/ui/misc/GradientText";
-import Button from "@/components/ui/my-button";
 import { H1, H4, P } from "@/components/ui/typography";
 import Image from "next/image";
 import { readdirSync } from "fs";
 import { join } from "path";
-import ProjectImageCarousel from "@/components/page-specific/work/ProjectImageCarousel";
-import { Card, CardContent } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 
 type PageParams = {
@@ -116,12 +111,6 @@ export default async function Page({ params }: PageProps) {
             {project.name.toUpperCase()}
           </TextGradient>
         </H1>
-
-        {/* <H1 classNames="text-center lg:text-start lg:text-[75px] lg:hidden">
-          <TextGradient>
-            {project.name.toUpperCase()}
-          </TextGradient>
-        </H1> */}
         <div className={cn([
           "text-muted-foreground gap-3 flex-wrap",
           "flex flex-col md:flex-row ",
