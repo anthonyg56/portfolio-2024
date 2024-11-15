@@ -10,7 +10,7 @@ import { join } from "path";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 
 type PageParams = {
-  projectName: string,
+  projectName: Promise<{ slug: string }>,
 };
 
 type MetadataProps = {
@@ -42,15 +42,15 @@ export async function generateMetadata({ params, searchParams }: MetadataProps, 
 };
 
 type PageProps = {
-  params: PageParams,
+  params: Promise<{ projectName: string }>,
 };
 
-export default function Page({ params }: PageProps) {
-  const { projectName } = params
+export default async function Page({ params }: PageProps) {
+  const slug = (await params).projectName
 
-  console.log(projectName);
+  console.log(slug);
 
-  const project = projects.find(value => value.slug === projectName)
+  const project = projects.filter(value => value.slug === slug)[0];
 
   console.log(project);
 
@@ -79,25 +79,6 @@ export default function Page({ params }: PageProps) {
       .replace("\\", "/")
     );
   };
-
-  // return (
-  //   <div className="relative">
-  //     <PageHeader
-  //       headerImage={{
-  //         uri: project.coverPhoto,
-  //         alt: `Cover photo for ${project.name}`
-  //       }}
-  //       githubUrl={project.githubUrl}
-  //       launched={project.launched}
-  //       liveUrl={project.liveUrl}
-  //       name={project.name}
-  //       tags={project.tags}
-  //     />
-  //     <MasonGalleryController
-  //       albums={albums}
-  //     />
-  //   </div>
-  // )
 
   const dirPath = project.screenshotDir ? `./public/UI_UX/${project.screenshotDir}/` : null;
   const fileNames = mapFileNames(dirPath);
@@ -139,7 +120,7 @@ export default function Page({ params }: PageProps) {
       </div>
 
       {/* Carousel */}
-      {/* <Carousel className="w-full max-w-lg md:max-w-3xl lg:max-w-4xl 2xl:max-w-5xl 3xl:max-w-none mx-auto pb-10 md:pb-12 lg:pb-16 2xl:pb-20 pt-6 lg:pt-0">
+      <Carousel className="w-full max-w-lg md:max-w-3xl lg:max-w-4xl 2xl:max-w-5xl 3xl:max-w-none mx-auto pb-10 md:pb-12 lg:pb-16 2xl:pb-20 pt-6 lg:pt-0">
         <CarouselContent className="w-full h-full">
           {fileNames?.map((fileName, index) => (
             <CarouselItem key={index} className="w-full h-full">
@@ -157,7 +138,7 @@ export default function Page({ params }: PageProps) {
         </CarouselContent>
         <CarouselPrevious />
         <CarouselNext />
-      </Carousel> */}
+      </Carousel>
 
       {/* Sections/Contrent */}
       <div className="grid grid-cols-12 mx-auto gap-9 pb-[69px] text-center 2xl:max-w-screen-xl 3xl:max-w-screen-3xl px-6">
