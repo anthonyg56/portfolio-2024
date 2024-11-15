@@ -6,8 +6,9 @@ import TextGradient from "@/components/ui/misc/GradientText";
 import { H1, H4, P } from "@/components/ui/typography";
 import Image from "next/image";
 import { readdirSync } from "fs";
-import { join } from "path";
+import { join, resolve } from "path";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
+import { readdir } from "fs/promises";
 
 type PageParams = {
   projectName: Promise<{ slug: string }>,
@@ -60,23 +61,22 @@ export default async function Page({ params }: PageProps) {
  * @param dirPath - Path of the directory containing the files
  * @returns a string array containing the names of all the files
  */
-  function mapFileNames(dirPath: string | null): string[] | undefined | null {
+  async function mapFileNames(dirPath: string | null): Promise<string[] | undefined | null> {
     console.log(project?.screenshotDir)
     if (!dirPath || !project?.screenshotDir)
       return
 
-    const newDir = project?.screenshotDir.replace("/", "");
-    const files = readdirSync(dirPath);
+    const files = await readdir(dirPath);
 
     return files.map(file => join(dirPath, file)
-      .replace(`public\\`, "")
+      .replace("\\", "/")
       .replace("\\", "/")
       .replace("\\", "/")
     );
   };
 
   const dirPath = project.screenshotDir ? `./public/UI_UX/${project.screenshotDir}/` : null;
-  const fileNames = mapFileNames(dirPath);
+  const fileNames = await mapFileNames(dirPath);
 
   console.log(fileNames)
   return (
