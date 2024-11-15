@@ -66,7 +66,7 @@ export default async function Page({ params }: PageProps) {
     if (!dirPath || !project?.screenshotDir)
       return
 
-    const resolvedPath = resolve(".", process.cwd(), dirPath);
+    const resolvedPath = resolve(process.cwd(), dirPath);
     console.log(`Resolved path: ${resolvedPath}`);
     const files = await readdir(resolvedPath);
 
@@ -124,7 +124,7 @@ export default async function Page({ params }: PageProps) {
           {fileNames?.map((fileName, index) => (
             <CarouselItem key={index} className="w-full h-full">
               <Image
-                src={`${fileName}`}
+                src={`/${fileName}`}
                 alt={`${project.name}'s cover photo`}
                 width={0}
                 height={0}
