@@ -51,7 +51,7 @@ export default function ProjectsCarousel({ projectTags }: { projectTags: Project
     return (
       <React.Fragment>
         <CarouselContent className="">
-          {currentProjects.map(project => (<ProjectsCarouselItem project={project} />))}
+          {currentProjects.map(project => (<ProjectsCarouselItem key={project.name} project={project} />))}
         </CarouselContent>
         <CarouselPrevious />
         <CarouselNext />
