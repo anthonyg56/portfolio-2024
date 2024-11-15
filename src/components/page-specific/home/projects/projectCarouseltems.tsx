@@ -18,7 +18,7 @@ export default function ProjectsCarouselItem({ project }: { project: Project }) 
         className="border-[#090909]/10 rounded-md overflow-hidden hover:cursor-pointer"
       >
         <Image
-          src={require(`../../../public/cover/${project.coverPhoto}`)}
+          src={require(`../../../../../public/cover/${project.coverPhoto}`)}
           alt={`${project.name} Cover`}
           className="md:h-[500px] object-cover object-center"
         />
