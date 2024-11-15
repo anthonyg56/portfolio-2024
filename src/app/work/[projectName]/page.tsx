@@ -69,13 +69,13 @@ export default async function Page({ params }: PageProps) {
     const files = await readdir(dirPath);
 
     return files.map(file => join(dirPath, file)
-      .replace("\\", "/")
+      .replace(`public\\`, "")
       .replace("\\", "/")
       .replace("\\", "/")
     );
   };
 
-  const dirPath = project.screenshotDir ? `./public/UI_UX/${project.screenshotDir}/` : null;
+  const dirPath = project.screenshotDir ? `./public/UI_UX/${project.screenshotDir}` : null;
   const fileNames = await mapFileNames(dirPath);
 
   console.log(fileNames)
