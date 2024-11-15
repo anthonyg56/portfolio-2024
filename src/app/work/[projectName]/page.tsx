@@ -66,7 +66,8 @@ export default async function Page({ params }: PageProps) {
     if (!dirPath || !project?.screenshotDir)
       return
 
-    const files = await readdir(process.cwd() + dirPath);
+    const resolvedPath = resolve(process.cwd() + dirPath);
+    const files = await readdir(resolvedPath);
 
     console.log(`Directory path: ${process.cwd() + dirPath}`)
     return files.map(file => join(dirPath, file)
