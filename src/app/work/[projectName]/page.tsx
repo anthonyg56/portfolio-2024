@@ -139,7 +139,7 @@ export default function Page({ params }: PageProps) {
       </div>
 
       {/* Carousel */}
-      <Carousel className="w-full max-w-lg md:max-w-3xl lg:max-w-4xl 2xl:max-w-5xl 3xl:max-w-none mx-auto pb-10 md:pb-12 lg:pb-16 2xl:pb-20 pt-6 lg:pt-0">
+      {/* <Carousel className="w-full max-w-lg md:max-w-3xl lg:max-w-4xl 2xl:max-w-5xl 3xl:max-w-none mx-auto pb-10 md:pb-12 lg:pb-16 2xl:pb-20 pt-6 lg:pt-0">
         <CarouselContent className="w-full h-full">
           {fileNames?.map((fileName, index) => (
             <CarouselItem key={index} className="w-full h-full">
@@ -157,7 +157,7 @@ export default function Page({ params }: PageProps) {
         </CarouselContent>
         <CarouselPrevious />
         <CarouselNext />
-      </Carousel>
+      </Carousel> */}
 
       {/* Sections/Contrent */}
       <div className="grid grid-cols-12 mx-auto gap-9 pb-[69px] text-center 2xl:max-w-screen-xl 3xl:max-w-screen-3xl px-6">
