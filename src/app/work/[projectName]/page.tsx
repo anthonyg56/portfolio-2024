@@ -68,6 +68,7 @@ export default async function Page({ params }: PageProps) {
 
     const files = await readdir(process.cwd() + dirPath);
 
+    console.log(`Directory path: ${process.cwd() + dirPath}`)
     return files.map(file => join(dirPath, file)
       .replace(`public\\`, "")
       .replace("\\", "/")
@@ -76,7 +77,7 @@ export default async function Page({ params }: PageProps) {
     );
   };
 
-  const dirPath = project.screenshotDir ? `/public/UI_UX/${project.screenshotDir}/` : null;
+  const dirPath = project.screenshotDir ? `/public/UI_UX/${project.screenshotDir}` : null;
   const fileNames = await mapFileNames(dirPath);
 
   console.log(fileNames)
@@ -121,7 +122,7 @@ export default async function Page({ params }: PageProps) {
           {fileNames?.map((fileName, index) => (
             <CarouselItem key={index} className="w-full h-full">
               <Image
-                src={`/${fileName}`}
+                src={`${fileName}`}
                 alt={`${project.name}'s cover photo`}
                 width={0}
                 height={0}
