@@ -44,7 +44,7 @@ export default function MyProjects() {
         projectTags={projectTags}
         handleTagsUpdate={handleTagsUpdate}
       />
-      <Carousel setApi={setCarouselApi} id="work" className="mx-auto lg:mx-0 py-10 w-full items-center justify-center max-w-sm md:max-w-3xl lg:max-w-none">
+      <Carousel setApi={setCarouselApi} id="work" className="mx-auto lg:mx-0 py-10 w-full items-center justify-center max-w-xs md:max-w-3xl lg:max-w-none">
         <ProjectsCarousel
           projectTags={projectTags}
         />
