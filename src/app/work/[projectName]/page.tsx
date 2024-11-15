@@ -47,12 +47,7 @@ type PageProps = {
 
 export default async function Page({ params }: PageProps) {
   const slug = (await params).projectName
-
-  console.log(slug);
-
   const project = projects.filter(value => value.slug === slug)[0];
-
-  console.log(project);
 
   if (!project) {
     throw new Error("Project not found");

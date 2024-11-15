@@ -22,7 +22,7 @@ export const projects: Project[] = [
       title: "Provide a 3rd party platform for users.",
       text: "My theory was if users had a central platform to upload, share, and download custom NGenuity RGB profiles; along with an incentive of getting paid per download of their preset. Not only would this help organize profiles on the web, the number of profiles availables would increase as well.",
     },
-    screenshotDir: "/HyperSets",
+    screenshotDir: "HyperSets",
     tech: ["Next.js", "Supabase", "TypeScript", "TailwindCss", "Figma", "Trello"],
   },
   {
@@ -70,7 +70,7 @@ export const projects: Project[] = [
       title: "Stay connected to those who matter, not the world.",
       text: "Offer users the ability to create private or public online spaces for their friends, just like Discord, except with the option to customize it with common utilities and social media features they use every day called widgets. It will also be meant for the everyday consumer, not just those familiar with the complexities of building something like a discord server or subreddit.",
     },
-    screenshotDir: "/Tribe",
+    screenshotDir: "Tribe",
     tech: ["Next.js", "Notion", "TypeScript", "TailwindCss", "Figma", "PostgresSql", "Node.js"],
   },
   {
@@ -94,7 +94,7 @@ export const projects: Project[] = [
       title: "Streamline the procurement process",
       text: "Procurement is a management platform specifically designed for municipal buyers and vendors. It serves as a centralized system that streamlines the entire procurement process within municipal governments. The platform offers tools for creating, managing, and auditing procurements, facilitating efficient communication between municipal procurement officers and vendors.",
     },
-    screenshotDir: "/Procurement",
+    screenshotDir: "Procurement",
     tech: ["Next.js", "TypeScript", "TailwindCss", "Figma", "Trello", "PostgresSql", "Prisma"],
   },
 
@@ -119,7 +119,7 @@ export const projects: Project[] = [
       title: "",
       text: "",
     },
-    screenshotDir: "/MOL",
+    screenshotDir: "MOL",
     tech: ["Figma", "Notion",],
   },
 ];
