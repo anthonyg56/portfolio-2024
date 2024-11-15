@@ -67,9 +67,10 @@ export default async function Page({ params }: PageProps) {
       return
 
     const resolvedPath = resolve(process.cwd() + dirPath);
+    console.log(`Resolved path: ${resolvedPath}`);
     const files = await readdir(resolvedPath);
 
-    console.log(`Directory path: ${process.cwd() + dirPath}`)
+
     return files.map(file => join(dirPath, file)
       .replace(`public\\`, "")
       .replace("\\", "/")
