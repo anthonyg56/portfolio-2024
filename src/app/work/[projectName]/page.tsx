@@ -45,7 +45,7 @@ type PageProps = {
   params: PageParams,
 };
 
-export default async function Page({ params }: PageProps) {
+export default function Page({ params }: PageProps) {
   const { projectName } = params
 
   console.log(projectName);
