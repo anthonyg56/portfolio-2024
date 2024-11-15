@@ -66,7 +66,7 @@ export default async function Page({ params }: PageProps) {
     if (!dirPath || !project?.screenshotDir)
       return
 
-    const resolvedPath = resolve(process.cwd() + dirPath);
+    const resolvedPath = resolve(".", process.cwd(), dirPath);
     console.log(`Resolved path: ${resolvedPath}`);
     const files = await readdir(resolvedPath);
 
@@ -79,7 +79,7 @@ export default async function Page({ params }: PageProps) {
     );
   };
 
-  const dirPath = project.screenshotDir ? `/public/UI_UX/${project.screenshotDir}` : null;
+  const dirPath = project.screenshotDir ? `public/UI_UX/${project.screenshotDir}` : null;
   const fileNames = await mapFileNames(dirPath);
 
   console.log(fileNames)
