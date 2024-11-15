@@ -15,7 +15,7 @@ export default function ProjectTagsNavigation({ api, projectTags, handleTagsUpda
     <div className="flex flex-col justify-center items-center xl:items-start">
       <H3 classNames="">My Work</H3>
 
-      <div className="flex flex-row gap-x-3 py-3 items-center xl:items-start justify-center">
+      {/* <div className="flex flex-row gap-x-3 py-3 items-center xl:items-start justify-center">
         <H4>Tags:</H4>
         {tagsList.map((value: ProjectTag, index) => (
           <Button
@@ -27,7 +27,7 @@ export default function ProjectTagsNavigation({ api, projectTags, handleTagsUpda
             {value}
           </Button>
         ))}
-      </div>
+      </div> */}
     </div >
   );
 };

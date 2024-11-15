@@ -5,6 +5,7 @@ import { ProjectTag } from "@/lib/types";
 import { CarouselItem, CarouselContent, CarouselPrevious, CarouselNext } from "../ui/carousel";
 import { H4 } from "../ui/typography";
 import ProjectsCarouselItem from "./projectCarouseltems";
+import React from "react";
 
 export default function ProjectsCarousel({ projectTags }: { projectTags: ProjectTag[] }) {
   const currentProjects = projects.filter(item => {
@@ -48,13 +49,13 @@ export default function ProjectsCarousel({ projectTags }: { projectTags: Project
     );
   } else {
     return (
-      <div>
-        <CarouselContent>
+      <React.Fragment>
+        <CarouselContent className="">
           {currentProjects.map(project => (<ProjectsCarouselItem project={project} />))}
         </CarouselContent>
         <CarouselPrevious />
         <CarouselNext />
-      </div>
+      </React.Fragment>
 
     );
   };

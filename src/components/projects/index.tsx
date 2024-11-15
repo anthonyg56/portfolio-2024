@@ -1,7 +1,7 @@
 "use client"
 
 import { ProjectTag } from "@/lib/types";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { CarouselApi, Carousel } from "../ui/carousel";
 import ProjectsCarousel from "./projectCarousel";
 import ProjectTagsNavigation from "./projectsTags";
@@ -10,7 +10,7 @@ import ProjectTagsNavigation from "./projectsTags";
 export default function MyProjects() {
   const [carouselApi, setCarouselApi] = useState<CarouselApi>();
   const [projectTags, setProjectTags] = useState<ProjectTag[]>([
-    "App Development", "Feature Integration", "Personal", "UI/UX", "Upgrade/Migration"
+    "Web App Development", "Feature Integration", "Personal", "UI/UX", "Upgrade/Migration"
   ]);
 
   useEffect(() => {
@@ -38,19 +38,17 @@ export default function MyProjects() {
   };
 
   return (
-    // <div className="grid max-lg:container w-full gap-y-6 py-14 2xl:py-20" id="work">
-    <div id="work">
-      <Carousel setApi={setCarouselApi}>
-        <ProjectTagsNavigation
-          api={carouselApi}
-          projectTags={projectTags}
-          handleTagsUpdate={handleTagsUpdate}
-        />
+    <div className="flex justify-center flex-col">
+      <ProjectTagsNavigation
+        api={carouselApi}
+        projectTags={projectTags}
+        handleTagsUpdate={handleTagsUpdate}
+      />
+      <Carousel setApi={setCarouselApi} id="work" className="mx-auto lg:mx-0 py-10 w-full items-center justify-center max-w-sm md:max-w-3xl lg:max-w-none">
         <ProjectsCarousel
           projectTags={projectTags}
         />
       </Carousel>
     </div>
-    // </div>
   );
 };

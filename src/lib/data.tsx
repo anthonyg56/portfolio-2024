@@ -2,7 +2,7 @@ import { Album, Project, ProjectTag, Technology } from "./types";
 
 export const projects: Project[] = [
   {
-    tags: ["Personal", "UI/UX", "App Development"],
+    tags: ["Personal", "UI/UX", "Web App Development"],
     launched: true,
     name: "HyperSets",
     liveUrl: "hyper-sets.com",
@@ -35,22 +35,22 @@ export const projects: Project[] = [
     githubUrl: null,
     coverPhoto: "rivrb.png",
     problem: {
-      title: "",
+      title: "Digital Misinformation leads to poor decisions.",
       text: "",
     },
     solution: {
-      title: "",
-      text: "",
+      title: "Fact check any information you come across",
+      text: "Rivrb is combating digital misinformation so that everyone can make informed online decisions no matter where they find themselves on the internet. Rivrb provides fast, efficient fact-checking automation, ensuring the most accurate & credible information is presented to users when they’re assessing digital content.",
     },
     about: {
-      title: "A Chrome Extension for Fact-Checking",
+      title: "A Chrome Extension & Social Platform for Fact-Checking",
       text: "Rivrb is an AI & human-powered system that helps users quickly and accurately determine the credibility and accuracy of online information",
     },
     screenshotDir: null,
     tech: ["Firebase", "JavaScript", "TypeScript", "Expo", "Node.js", "GraphQL"],
   },
   {
-    tags: ["App Development", "UI/UX", "Personal"],
+    tags: ["Web App Development", "UI/UX", "Personal"],
     launched: false,
     name: "Tribe",
     liveUrl: null,
@@ -74,7 +74,7 @@ export const projects: Project[] = [
     tech: ["Next.js", "Notion", "TypeScript", "TailwindCss", "Figma", "PostgresSql", "Node.js"],
   },
   {
-    tags: ["App Development", "UI/UX"],
+    tags: ["Web App Development", "UI/UX"],
     launched: false,
     name: "Procurement",
     liveUrl: null,
@@ -201,6 +201,6 @@ export const techImages: {
 
 export const technologiesList: Technology[] = ["Expo", "Figma", "GraphQL", "JavaScript", "Next.js", "Node.js", "Notion", "PostgresSql", "Prisma", "React.js", "Rust", "Supabase", "TailwindCss", "Trello", "TypeScript"];
 
-export const tagsList: ProjectTag[] = ["UI/UX", "App Development", "Upgrade/Migration", "Feature Integration", "Personal", "Mobile App Development"];
+export const tagsList: ProjectTag[] = ["UI/UX", "Web App Development", "Upgrade/Migration", "Feature Integration", "Personal", "Mobile App Development"];
 
 export const albumList: Album[] = ["Figma", "Screen Shots", "Documents", "Blog Posts"];

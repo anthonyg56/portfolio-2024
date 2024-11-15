@@ -25,7 +25,7 @@ export type Albums = {
 
 export type OptionalURL = string | null;
 
-export type ProjectTag = "UI/UX" | "App Development" | "Upgrade/Migration" | "Feature Integration" | "Personal" | "Mobile App Development";
+export type ProjectTag = "UI/UX" | "Web App Development" | "Upgrade/Migration" | "Feature Integration" | "Personal" | "Mobile App Development";
 
 export type Project = {
   name: string,
