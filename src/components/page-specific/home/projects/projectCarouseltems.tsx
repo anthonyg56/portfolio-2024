@@ -1,4 +1,5 @@
 "use client"
+
 import { Project } from "@/lib/types";
 import { useRouter } from "next/navigation";
 import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from "../../../ui/card";
@@ -29,9 +30,6 @@ export default function ProjectsCarouselItem({ project }: { project: Project }) 
             <P className="text-xs -translate-y-1 text-muted-foreground">•</P>
             <P className="text-sm -translate-y-1 text-muted-foreground">{project.year}</P>
           </div>
-
-
-
 
           <CardDescription>{project.tags.join(", ")}</CardDescription>
         </CardHeader>

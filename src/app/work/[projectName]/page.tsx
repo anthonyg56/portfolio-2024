@@ -57,7 +57,7 @@ export default async function Page({ params }: PageProps) {
   };
 
   const images: null | CloudinaryResourcesRes = await cloudinary.api.resources({
-    prefix: `portfolio/UI_UX/${project.screenshotDir}/`,
+    prefix: `portfolio/UI_UX/${project.cloudinaryDir}/`,
     resource_type: "image",
     type: "upload",
   }, (error: unknown, results: CloudinaryResourcesRes) => {
@@ -72,7 +72,6 @@ export default async function Page({ params }: PageProps) {
     return results;
   });
 
-  console.log(images)
   return (
     <div className="grid">
       {/* Header */}
@@ -109,7 +108,10 @@ export default async function Page({ params }: PageProps) {
       </div>
 
       {/* Carousel */}
-      <ProjectScreenshotsCarousel images={images} />
+      <ProjectScreenshotsCarousel
+        projectName={project.name}
+        images={images}
+      />
 
       {/* Sections/Contrent */}
       <div className="grid grid-cols-12 mx-auto gap-9 pb-[69px] text-center 2xl:max-w-screen-xl 3xl:max-w-screen-3xl px-6">

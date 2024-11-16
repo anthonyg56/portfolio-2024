@@ -40,7 +40,7 @@ export type Project = {
   launched: boolean,
   tags: ProjectTag[],
   tech: Technology[],
-  screenshotDir: string | null,
+  cloudinaryDir: string | null,
 }
 
 // export type GroupedProjects = {

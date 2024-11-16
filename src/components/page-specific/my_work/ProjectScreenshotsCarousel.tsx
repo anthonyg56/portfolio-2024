@@ -1,13 +1,14 @@
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel"
 import { H4 } from "@/components/ui/typography"
-import { CloudinaryResource, CloudinaryResourcesRes } from "@/lib/types"
+import { CloudinaryResourcesRes } from "@/lib/types"
 import Image from "next/image"
 
 type Props = {
-  images: CloudinaryResourcesRes | null
+  images: CloudinaryResourcesRes | null,
+  projectName: string,
 }
 
-export default function ProjectScreenshotsCarousel({ images }: Props) {
+export default function ProjectScreenshotsCarousel({ images, projectName }: Props) {
   return (
     <Carousel className="w-full max-w-lg md:max-w-3xl lg:max-w-4xl 2xl:max-w-5xl 3xl:max-w-none mx-auto pb-10 md:pb-12 lg:pb-16 2xl:pb-20 pt-6 lg:pt-0">
       <CarouselContent className="w-full h-full">
@@ -19,7 +20,7 @@ export default function ProjectScreenshotsCarousel({ images }: Props) {
           <CarouselItem key={index} className="w-full h-full">
             <Image
               src={fileName.secure_url}
-              alt={`${fileName.display_name}'s cover photo ${index + 1}`}
+              alt={`Screenshot of ${projectName}: ${fileName.display_name}`}
               width={0}
               height={0}
               sizes="100vw 100%"
