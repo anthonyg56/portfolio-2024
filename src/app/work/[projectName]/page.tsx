@@ -56,21 +56,21 @@ export default async function Page({ params }: PageProps) {
     throw new Error("Project not found");
   };
 
-  const images: string | null | CloudinaryResourcesRes = await cloudinary.api.resources({
+  const images: null | CloudinaryResourcesRes = await cloudinary.api.resources({
     prefix: `portfolio/UI_UX/${project.screenshotDir}/`,
     resource_type: "image",
     type: "upload",
   }, (error: unknown, results: CloudinaryResourcesRes) => {
     if (error instanceof Error) {
       console.log(error)
-      return error.message
+      return null
     };
 
     if (!results)
       return null;
 
     return results;
-  })
+  });
 
   console.log(images)
   return (
