@@ -3,8 +3,15 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Navbar from "@/components/layout/navbar";
+import { v2 as cloudinary } from 'cloudinary';
 
 const inter = Inter({ subsets: ["latin"] });
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 export const metadata: Metadata = {
   title: "Fullstack Web Developer | Indianapolis, Indiana",

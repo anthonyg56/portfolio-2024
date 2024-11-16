@@ -1,14 +1,16 @@
+
 import { Metadata, ResolvingMetadata } from "next";
 import { capitalizeFirst, cn } from "@/lib/utils";
-import { projects } from "@/lib/data";
+import { cloudinaryUrl, projects } from "@/lib/data";
 import Section from "@/components/layout/sections";
 import TextGradient from "@/components/ui/misc/GradientText";
 import { H1, H4, P } from "@/components/ui/typography";
-import Image from "next/image";
-import { readdirSync } from "fs";
-import { join, resolve } from "path";
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
-import { readdir } from "fs/promises";
+import { CldImage } from 'next-cloudinary';
+import { CloudinaryResource, CloudinaryResourcesRes } from "@/lib/types";
+import { v2 as cloudinary } from 'cloudinary';
+import ProjectScreenshotsCarousel from "@/components/page-specific/my_work/ProjectScreenshotsCarousel";
+// import { fetchImages } from "@/lib/api";
 
 type PageParams = {
   projectName: Promise<{ slug: string }>,
@@ -54,35 +56,23 @@ export default async function Page({ params }: PageProps) {
     throw new Error("Project not found");
   };
 
-  /**
- * Takes the path of a directory and returns a string array
- * containing the names of all the files in said directory
- * 
- * @param dirPath - Path of the directory containing the files
- * @returns a string array containing the names of all the files
- */
-  async function mapFileNames(dirPath: string | null): Promise<string[] | undefined | null> {
-    console.log(project?.screenshotDir)
-    if (!dirPath || !project?.screenshotDir)
-      return
+  const images: string | null | CloudinaryResourcesRes = await cloudinary.api.resources({
+    prefix: `portfolio/UI_UX/${project.screenshotDir}/`,
+    resource_type: "image",
+    type: "upload",
+  }, (error: unknown, results: CloudinaryResourcesRes) => {
+    if (error instanceof Error) {
+      console.log(error)
+      return error.message
+    };
 
-    const resolvedPath = join(process.cwd(), dirPath);
-    console.log(`Resolved path: ${resolvedPath}`);
-    const files = await readdir(resolvedPath);
+    if (!results)
+      return null;
 
+    return results;
+  })
 
-    return files.map(file => join(dirPath, file)
-      .replace(`public\\`, "")
-      .replace("\\", "/")
-      .replace("\\", "/")
-      .replace("\\", "/")
-    );
-  };
-
-  const dirPath = project.screenshotDir ? `public/UI_UX/${project.screenshotDir}/` : null;
-  const fileNames = await mapFileNames(dirPath);
-
-  console.log(fileNames)
+  console.log(images)
   return (
     <div className="grid">
       {/* Header */}
@@ -119,25 +109,7 @@ export default async function Page({ params }: PageProps) {
       </div>
 
       {/* Carousel */}
-      <Carousel className="w-full max-w-lg md:max-w-3xl lg:max-w-4xl 2xl:max-w-5xl 3xl:max-w-none mx-auto pb-10 md:pb-12 lg:pb-16 2xl:pb-20 pt-6 lg:pt-0">
-        <CarouselContent className="w-full h-full">
-          {fileNames?.map((fileName, index) => (
-            <CarouselItem key={index} className="w-full h-full">
-              <Image
-                src={`/${fileName}`}
-                alt={`${project.name}'s cover photo`}
-                width={0}
-                height={0}
-                sizes="100vw 100%"
-                quality={100}
-                className="object-contain object-center w-full h-full z-10 max-h-[900px]"
-              />
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
-      </Carousel>
+      <ProjectScreenshotsCarousel images={images} />
 
       {/* Sections/Contrent */}
       <div className="grid grid-cols-12 mx-auto gap-9 pb-[69px] text-center 2xl:max-w-screen-xl 3xl:max-w-screen-3xl px-6">

@@ -204,3 +204,5 @@ export const technologiesList: Technology[] = ["Expo", "Figma", "GraphQL", "Java
 export const tagsList: ProjectTag[] = ["UI/UX", "Web App Development", "Upgrade/Migration", "Feature Integration", "Personal", "Mobile App Development"];
 
 export const albumList: Album[] = ["Figma", "Screen Shots", "Documents", "Blog Posts"];
+
+export const cloudinaryUrl = `https://${process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY}:${process.env.NEXT_PUBLIC_CLOUDINARY_API_SECRET}@api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}`;
