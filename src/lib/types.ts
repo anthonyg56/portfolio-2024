@@ -18,6 +18,8 @@ export type Technology =
   "Prisma" |
   "Firebase";
 
+export type techIconSize = "default" | "small" | "large" | "about";
+
 // Projects Data
 export type Albums = {
   [x in Album]: string[] | null;

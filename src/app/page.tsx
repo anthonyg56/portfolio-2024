@@ -6,8 +6,8 @@ import { Separator } from "@/components/ui/separator";
 import { Metadata } from "next";
 import TextGradient from "@/components/ui/misc/GradientText";
 import { technologiesList } from "@/lib/data";
-import TechnologiesIcons from "@/components/ui/tech-icons";
 import MyProjects from "@/components/page-specific/home/projects";
+import TechnologiesIcons from "@/components/ui/misc/tech-icons";
 
 export const metadata: Metadata = {
   title: "Fullstack Web Developer | Indianapolis, Indiana | Home",
@@ -75,7 +75,7 @@ export default async function Page() {
             </div>
             <div className="py-6">
               <H3>My Skills and Technologies</H3>
-              <TechnologiesIcons technologies={technologiesList} />
+              <TechnologiesIcons technologies={technologiesList} size="about" />
             </div>
           </div>
         </div>
