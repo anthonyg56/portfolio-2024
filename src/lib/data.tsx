@@ -79,7 +79,7 @@ export const projects: Project[] = [
     name: "Tribe",
     liveUrl: null,
     slug: "tribe",
-    year: 2024,
+    year: 2023,
     githubUrl: null,
     coverPhoto: "tribe.jpg",
     problem: {
