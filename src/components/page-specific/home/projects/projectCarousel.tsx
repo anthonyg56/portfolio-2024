@@ -37,11 +37,7 @@ export default function ProjectsCarousel({ projectTags }: { projectTags: Project
     };
   });
 
-  console.log()
-  if (
-    currentProjects.length === 0 && currentProjects[0] === null ||
-    currentProjects.length === 0 && currentProjects[0] === undefined
-  ) {
+  if (currentProjects.length === 0 && !currentProjects[0]) {
     return (
       <div>
         <H4>No Projects Found</H4>
@@ -53,10 +49,22 @@ export default function ProjectsCarousel({ projectTags }: { projectTags: Project
         <CarouselContent className="">
           {currentProjects.map(project => (<ProjectsCarouselItem key={project.name} project={project} />))}
         </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
+        <CarouselNavigator />
+        {/* <CarouselPrevious />
+        <CarouselNext /> */}
       </React.Fragment>
-
     );
   };
 };
+
+function CarouselNavigator() {
+  return (
+    <div className="relative">
+      <div>
+        { }
+      </div>
+      <CarouselPrevious />
+      <CarouselNext />
+    </div>
+  )
+}

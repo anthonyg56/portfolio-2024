@@ -61,7 +61,7 @@ export default async function Page() {
             height={0}
             sizes="100vw 100%"
             quality={100}
-            className="col-span-6 max-h-[800px] h-[450px] md:h-[720px] object-cover object-center w-full rounded-full md:rounded-lg lg:rounded-lg"
+            className="col-span-6 max-h-[800px] h-auto w-auto md:h-[720px] object-cover object-center rounded-full md:rounded-lg lg:rounded-lg"
           />
           <div className="col-span-6 container flex flex-col justify-center xl:w-10/12">
             <div className="py-6">
